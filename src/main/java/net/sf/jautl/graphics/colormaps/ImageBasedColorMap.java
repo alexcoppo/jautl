@@ -49,7 +49,6 @@ public class ImageBasedColorMap implements IColorMapRGBAF {
 		return im != null;
 	}
 
-    @Override
 	public void lookup(double x, ColorRGBAF color) {
 		if (!isValid()) {
 			//TODO set to default;
