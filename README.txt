@@ -1,1 +1,1 @@
-Java Utility Library, a collection of useful Java classes
+Java Utility Library, a collection of useful Java classes.
