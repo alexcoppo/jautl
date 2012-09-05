@@ -60,6 +60,15 @@ public class JFileChooserDecorator {
 	}
 	
 	/**
+	 * Set the initial directory for the file chooser.
+	 * @param path the initial directory
+	 */
+	public void setInitialDirectory(String path) {
+		File f = new File(path);
+		this.jfc.setCurrentDirectory(f);
+	}
+
+	/**
 	 * Get the underlying JFileChooser instance.
 	 * @return 
 	 */
