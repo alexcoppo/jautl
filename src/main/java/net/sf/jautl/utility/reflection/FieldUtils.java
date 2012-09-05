@@ -26,10 +26,11 @@
 */
 package net.sf.jautl.utility.reflection;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+//TODO fix warnings
 
 /**
  * This class implements some common methods used when performing reflection
