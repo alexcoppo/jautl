@@ -28,6 +28,9 @@ package net.sf.jautl.graphics.colors;
 
 import net.sf.jautl.numeric.LinearInterpolator;
 
+/**
+ * This class represents a float-precision grey color.
+ */
 public class ColorGreyF {
 	/** The maximum value for the color components. */
 	public static final float MAX_VALUE = 1.0f;
