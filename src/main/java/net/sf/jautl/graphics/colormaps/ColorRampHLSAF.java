@@ -53,6 +53,13 @@ public class ColorRampHLSAF extends ColorRamp {
         this.tmp = new ColorHLSAF();
 	}
     
+	/**
+	 * The constructor.
+	 * @param left the color at the begining of the ramp
+	 * @param right the color at the end of the ramp
+	 * @param gamma the value of the Gamma Correction to apply to colors
+	 * @param ef the EaseFunctor to process lookup position
+	 */
 	public ColorRampHLSAF(ColorHLSAF left, ColorHLSAF right, double gamma, EaseFunction ef) {
         this(gamma, ef);
         
@@ -60,6 +67,13 @@ public class ColorRampHLSAF extends ColorRamp {
         this.right.assign(right);
     }
 
+	/**
+	 * The constructor.
+	 * @param left the color at the begining of the ramp
+	 * @param right the color at the end of the ramp
+	 * @param gamma the value of the Gamma Correction to apply to colors
+	 * @param ef the EaseFunctor to process lookup position
+	 */
 	public ColorRampHLSAF(ColorRGBAF left, ColorRGBAF right, double gamma, EaseFunction ef) {
 		this(gamma, ef);
 

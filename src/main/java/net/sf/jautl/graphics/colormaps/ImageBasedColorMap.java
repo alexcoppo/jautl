@@ -33,10 +33,19 @@ import javax.imageio.ImageIO;
 import net.sf.jautl.graphics.colormaps.IColorMapRGBAF;
 import net.sf.jautl.graphics.colors.ColorRGBAF;
 
+/**
+ * This class implements a color map based upon an image file. The colors
+ * along horizontal lines represent the color map.
+ */
 public class ImageBasedColorMap implements IColorMapRGBAF {
 	private BufferedImage im;
 	private int rowIndex;
-	
+
+	/**
+	 * The constructor.
+	 * @param filename the name of the file to use as color map specification
+	 * @param rowIndex the index of the row of the data to use
+	 */
 	public ImageBasedColorMap(String filename, int rowIndex) {
 		try {
 			im = ImageIO.read(new File(filename));
@@ -45,13 +54,19 @@ public class ImageBasedColorMap implements IColorMapRGBAF {
 		} 
 	}
 
+	/**
+	 * Check whether the loading went without problems.
+	 */
 	public boolean isValid() {
 		return im != null;
 	}
 
 	public void lookup(double x, ColorRGBAF color) {
 		if (!isValid()) {
-			//TODO set to default;
+			color.setR(0);
+			color.setG(0);
+			color.setB(0);
+			color.setA(1);
 			return;
 		}
 

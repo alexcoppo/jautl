@@ -100,7 +100,7 @@ public class ImageGreyF implements IImageSourceGreyF, IImageSinkGreyF {
 
 	/**
 	 * Set all pixels to the same grey level.
-	 * @param color the grey level to set the pixels to
+	 * @param greyLevel the grey level to set the pixels to
 	 */
 	public void setAll(ColorGreyF greyLevel) {
 		for (int y = 0; y < height; y++) {
