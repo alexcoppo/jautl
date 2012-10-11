@@ -61,6 +61,11 @@ public class ImageBasedColorMap implements IColorMapRGBAF {
 		return im != null;
 	}
 
+	/**
+	 * Lookup the color given a [0, 1] fractional index.
+	 * @param x the index of the color, clipped to [0, 1] if required
+	 * @param color the corresponding color
+	 */
 	public void lookup(double x, ColorRGBAF color) {
 		if (!isValid()) {
 			color.setR(0);

@@ -93,15 +93,18 @@ public final class HMAC2104 extends DigestEngine {
 		Arrays.fill(tmp, (byte)0);
 	}
 
+	@Override
 	public void initiate() {
 		engine.initiate();
 		engine.add(IPad, 0, 64);
 	}
 
+	@Override
 	public void add(byte b) {
 		engine.add(b);
 	}
 
+	@Override
 	public void terminate() {
 		engine.terminate();
 
@@ -115,6 +118,10 @@ public final class HMAC2104 extends DigestEngine {
 		engine.getAsBytes(digest);
 	}
 
+    /**
+     * Remove security related information.
+     */
+	@Override
 	public final void clear() {
 		Arrays.fill(IPad, (byte)0);
 		Arrays.fill(OPad, (byte)0);

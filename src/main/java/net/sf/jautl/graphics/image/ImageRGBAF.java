@@ -47,10 +47,16 @@ public class ImageRGBAF implements IImageSourceRGBAF, IImageSinkRGBAF {
 		resize(width, height);
 	}
 	
+	/**
+	 * Return the width of the source.
+	 */
 	public int getWidth() {
 		return width;
 	}
 	
+	/**
+	 * Return the height of the source.
+	 */
 	public int getHeight() {
 		return height;
 	}

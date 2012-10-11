@@ -32,6 +32,11 @@ import net.sf.jautl.graphics.colors.ColorRGBAF;
  * The base of all color maps.
  */
 public abstract class ColorMapRGBAF implements IColorMapRGBAF {
+	/**
+	 * Lookup the color given a [0, 1] fractional index.
+	 * @param x the index of the color, clipped to [0, 1] if required
+	 * @param color the corresponding color
+	 */
 	public void lookup(double x, ColorRGBAF color) {
 		if (x < 0) x = 0;
 		if (x > 1) x = 1;

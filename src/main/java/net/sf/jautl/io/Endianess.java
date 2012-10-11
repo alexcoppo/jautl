@@ -30,6 +30,8 @@ package net.sf.jautl.io;
  * This enumeration lists the different alternatives for byte ordering.
  */
 public enum Endianess {
+	/** Small endian (Intel byte order) */
     SMALL_ENDIAN,
+    /** Big endian (Motorola byte order) */
     BIG_ENDIAN
 }

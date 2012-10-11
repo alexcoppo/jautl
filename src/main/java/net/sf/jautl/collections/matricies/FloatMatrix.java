@@ -116,6 +116,13 @@ public class FloatMatrix extends MatrixBase {
 		return data[index];
 	}
 	
+	/**
+	 * Resize the matrix to new dimensions. If the matrix
+	 * has already the required sizes, data are simply cleared.
+	 * @param width the new width
+	 * @param height the new height
+	 * @return whether the underlying storage was reallocated
+	 */
 	public boolean resize(int width, int height) {
 		if (super.resize(width, height)) {
 			data = new float[width * height];

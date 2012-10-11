@@ -39,20 +39,30 @@ public final class Adler32 extends DigestEngine {
 		super(4);
 	}
 
+	@Override
 	public void initiate() {
 		m_Engine.reset();
 	}
 
+    /**
+     * Add a block of data to the currently processed.
+     * @param data the data to be added
+     * @param offset the offset in the vector from which start reading
+     * @param length the number of bytes to process
+     */
+	@Override
 	public void add(byte[] data, int offset, int length) {
 		m_Engine.update(data, offset, length);
 	}
 
+	@Override
     public void add(byte b) {
         byte[] bytes = new byte[1];
         bytes[0] = b;
         add(bytes);
     }
 
+	@Override
 	public void terminate() {
 		long hash = m_Engine.getValue();
         

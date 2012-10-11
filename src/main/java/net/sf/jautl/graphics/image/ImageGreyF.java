@@ -51,10 +51,16 @@ public class ImageGreyF implements IImageSourceGreyF, IImageSinkGreyF {
 		resize(width, height);
 	}
 	
+	/**
+	 * Return the width of the source.
+	 */
 	public int getWidth() {
 		return width;
 	}
 	
+	/**
+	 * Return the height of the source.
+	 */
 	public int getHeight() {
 		return height;
 	}
@@ -86,12 +92,24 @@ public class ImageGreyF implements IImageSourceGreyF, IImageSinkGreyF {
 		return true;
 	}
 
+	/**
+	 * Get a pixel grey level.
+	 * @param x the x (horizontal) coordinate of the pixel
+	 * @param y the y (vertical) coordinate of the pixel
+	 * @param grey the grey level to set to the vlaue of the given pixel
+	 */
 	public void getColor(int x, int y, ColorGreyF grey) {
 		float[] row = rows[y];
 		
         grey.setGrey(row[x]);
 	}
 
+	/**
+	 * Set a pixel to a given grey level.
+	 * @param x the x (horizontal) coordinate of the pixel
+	 * @param y the y (vertical) coordinate of the pixel
+	 * @param greyLevel the grey level to set the pixel to
+	 */
 	public void setColor(int x, int y, ColorGreyF greyLevel) {
 		float[] row = rows[y];
 		

@@ -86,6 +86,11 @@ public class ColorMapMultiRamp implements IColorMapRGBAF {
         ramps.add(ramp);
     }
     
+	/**
+	 * Lookup the color given a [0, 1] fractional index.
+	 * @param x the index of the color, clipped to [0, 1] if required
+	 * @param color the corresponding color
+	 */
     public void lookup(double x, ColorRGBAF color) {
 		int index = Collections.binarySearch(minimums, new Double(x), null);
         if (index < 0) index = -index - 2;

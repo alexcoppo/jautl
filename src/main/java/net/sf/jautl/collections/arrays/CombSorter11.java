@@ -33,7 +33,7 @@ public class CombSorter11 {
 	/**
 	 * The sort method.
 	 * @param count the number of entries in the vector to sort
-	 * @param sa the SortingAdapter instance to use to perform
+	 * @param api the IndexedCollectionSortAPI instance to use to perform
 	 * comparisons and exchanges
 	 */
     public static void sort(int count, IndexedCollectionSortAPI api) {

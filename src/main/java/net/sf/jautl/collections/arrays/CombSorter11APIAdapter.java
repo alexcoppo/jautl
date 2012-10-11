@@ -30,7 +30,18 @@ package net.sf.jautl.collections.arrays;
  * Abstract class implementing the CombSorter11API interface.
  */
 public abstract class CombSorter11APIAdapter implements IndexedCollectionSortAPI {
+	/**
+	 * Return whether element i is less or equal to element j.
+	 * @param i the first element to compare 
+	 * @param j the second element to compare
+	 * @return the result of the comparison
+	 */
     public abstract boolean areOrdered(int i, int j);
 
+    /**
+     * Exchange place between elements i and j.
+     * @param i the first element to exchange
+     * @param j the second element to exchange
+     */
     public abstract void exchange(int i, int j);
 }

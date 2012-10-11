@@ -51,10 +51,16 @@ public class ImageRGBA8 implements IImageSourceRGBA8, IImageSinkRGBA8 {
 		resize(width, height);
 	}
 	
+	/**
+	 * Return the width of the source.
+	 */
 	public int getWidth() {
 		return width;
 	}
 	
+	/**
+	 * Return the height of the source.
+	 */
 	public int getHeight() {
 		return height;
 	}
