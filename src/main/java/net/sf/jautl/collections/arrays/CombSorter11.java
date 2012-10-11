@@ -36,7 +36,7 @@ public class CombSorter11 {
 	 * @param sa the SortingAdapter instance to use to perform
 	 * comparisons and exchanges
 	 */
-    public static void sort(int count, SortingAdapter sa) {
+    public static void sort(int count, IndexedCollectionSortAPI api) {
         for (int gap = count; ; ) {
             gap = (int)(gap / 1.3);
             if (gap == 9 || gap == 10) gap = 11;
@@ -47,8 +47,8 @@ public class CombSorter11 {
             for (int i = 0; i < count - gap; i++) {
                 int j = i + gap;
 
-                if (!sa.areOrdered(i, j)) {
-                    sa.exchange(i, j);
+                if (!api.areOrdered(i, j)) {
+                	api.exchange(i, j);
                     swapped = true;
                 }
             }
