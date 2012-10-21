@@ -91,7 +91,7 @@ public class FileNameUtilities {
      * Force, if necessary, the extension of a filename.
      * @param filename the filename to check 
      * @param extension the extension to force
-     * @result 
+     * @return the updated filename
      */
     public static String forceExtension(String filename, String extension) {
     	if (checkExtensionIgnoreCase(filename, extension))

@@ -33,7 +33,7 @@ package net.sf.jautl.rng.interfaces;
 public interface IBytesBlockSource {
     /**
      * The size in bytes of the block.
-     * @return 
+     * @return the size of the block
      */
     public int blockSize();
 

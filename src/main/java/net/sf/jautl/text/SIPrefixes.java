@@ -78,7 +78,7 @@ public class SIPrefixes {
      * The empty string is returned if the exponent is smaller than -24 or
      * larger than 24.
      * @param exponent the exponent
-     * @return 
+     * @return the name of the unit
      */
     public static String lookupSymbol(int exponent) {
         return (Math.abs(exponent) <= 24) ? SIPrefixes.SYMBOL.get(exponent) : "";
@@ -89,7 +89,7 @@ public class SIPrefixes {
      * The empty string is returned if the exponent is smaller than -24 or
      * larger than 24.
      * @param exponent the exponent
-     * @return 
+     * @return the symbol of the unit
      */
     public static String lookupPrefix(int exponent) {
         return (Math.abs(exponent) <= 24) ? SIPrefixes.PREFIX.get(exponent) : "";

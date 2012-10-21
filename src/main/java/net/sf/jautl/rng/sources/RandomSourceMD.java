@@ -95,7 +95,7 @@ public class RandomSourceMD implements IRandomizable, IBytesBlockSource {
 
 	/**
 	 * Return the number of blocks to generate before creating a new Initial Vector.
-	 * @return 
+	 * @return the value of the Initial Vector frequency
 	 */
 	public int getIVUpdateFrequency() {
 		return ivUpdateFrequency;

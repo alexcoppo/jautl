@@ -54,7 +54,7 @@ public class ProgrammerFormatter extends NumericFormatter {
      * shown as an SI prefix like M or G.
      * @param mantissaDigits the number of digits in the mantissa
      * @param unit the unit of measure
-     * @return 
+     * @return the resulting text
      */
     public String buildString(int mantissaDigits, String unit) {
     	StringBuilder SB = new StringBuilder();

@@ -32,7 +32,7 @@ package net.sf.jautl.rng.interfaces;
 public interface IBytesSource {
     /**
      * Generate next byte.
-     * @return 
+     * @return the generated value
      */
     public byte nextByte();
 }

@@ -32,7 +32,7 @@ package net.sf.jautl.rng.interfaces;
 public interface IDoublesSource {
     /**
      * Generate next double.
-     * @return 
+     * @return the generated value 
      */
     public double nextDouble();
 }

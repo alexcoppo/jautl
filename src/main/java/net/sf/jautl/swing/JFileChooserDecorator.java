@@ -70,7 +70,7 @@ public class JFileChooserDecorator {
 
 	/**
 	 * Get the underlying JFileChooser instance.
-	 * @return 
+	 * @return the underlying JFileChooser instance
 	 */
 	public JFileChooser getFileChooser() {
 		return jfc;

@@ -33,7 +33,7 @@ public class GeneratorsLong {
 	/**
 	 * Generate one random long.
      * @param ibs the IBytesSource to use as entropy source
-     * @return 
+     * @return the generated value
 	 */
 	public static long generate(IBytesSource ibs) {
 		long result = 0;
@@ -49,7 +49,7 @@ public class GeneratorsLong {
 	/**
 	 * Generate one random long.
      * @param iis the IIntegersSource to use as entropy source
-     * @return 
+     * @return the generated value 
 	 */
 	public static long generate(IIntegersSource iis) {
         final long MASK32 = 0xFFFFFFFFL;

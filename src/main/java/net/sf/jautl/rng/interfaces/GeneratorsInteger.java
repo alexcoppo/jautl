@@ -33,7 +33,7 @@ public class GeneratorsInteger {
 	/**
 	 * Generate one random integer.
 	 * @param ibs the IBytesSource implementator to use to create entropy
-     * @return 
+     * @return the generated value
 	 */
 	public static int generate(IBytesSource ibs) {
 		int result = 0;

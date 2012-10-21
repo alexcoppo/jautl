@@ -32,9 +32,9 @@ package net.sf.jautl.md;
  */
 public class UintHashUtilities {
 	/**
-	 * 
-	 * @param value
-	 * @return
+	 * The Wang hash function.
+	 * @param value the value to hash
+	 * @return the result of the hash
 	 */
     public static int wang(int value) {
         value = ~value + (value << 15);   // key = (key << 15) - key - 1;
@@ -48,9 +48,9 @@ public class UintHashUtilities {
     }
 
     /**
-     * 
-     * @param value
-     * @return
+	 * The Jenkins hash function.
+	 * @param value the value to hash
+	 * @return the result of the hash
      */
     public static int jenkins(int value) {
         value = (value + 0x7ed55d16) + (value << 12);
@@ -64,9 +64,9 @@ public class UintHashUtilities {
     }
 
     /**
-     * 
-     * @param value
-     * @return
+	 * The Ward hash function.
+	 * @param value the value to hash
+	 * @return the result of the hash
      */
     public static int ward(int value) {
         value = (value << 13) ^ value;
@@ -76,11 +76,11 @@ public class UintHashUtilities {
     }
 
     /**
-     * 
-     * @param a
-     * @param b
-     * @param c
-     * @return
+     * A three-value mix function.
+     * @param a the first value to mix
+     * @param b the second value to mix
+     * @param c the third value to mix
+     * @return the result of the mix
      */
     public static int mix(int a, int b, int c) {
         a = a - b; a = a - c; a = a ^ (c >>> 13);
@@ -97,10 +97,10 @@ public class UintHashUtilities {
     }
 
     /**
-     * 
-     * @param value
-     * @param salt
-     * @return
+     * The Murmur2 hash function.
+     * @param value the value to hash
+     * @param salt the value of the salt
+     * @return the result of the hash
      */
     public static int murmur2(int value, int salt) {
         final int M = 0x5bd1e995;
@@ -123,9 +123,9 @@ public class UintHashUtilities {
     }
 
     /**
-     * 
-     * @param value
-     * @return
+     * The Murmur3 Fmix function.
+     * @param value the value to hash
+     * @return the result of the hash
      */
 	public static int murmur3fmix(int value) {
 		value ^= value >>> 16;
@@ -136,19 +136,4 @@ public class UintHashUtilities {
 
 		return value;
 	}
-	
-	/*
-	 * hash *= CONST;
-	 * hash ^= CONST;
-	 * hash += CONST;
-	 * 
-	 * hash  = BitRotations.left(hash, CONST);
-	 * hash ^= BitRotations.left(hash, CONST);
-	 * hash += BitRotations.left(hash, CONST);
-	 */
-
-	/*
-	 * mix = a + b
-	 * mix = a ^ b
-	 */
 }

@@ -32,7 +32,7 @@ package net.sf.jautl.rng.interfaces;
 public interface IIntegersSource {
     /**
      * Generate next integer.
-     * @return 
+     * @return the generated value
      */
     public int nextInt();
 }

@@ -73,7 +73,7 @@ public class RandomSourceJavaUtil implements IRandomizable, IBytesSource {
 
 	/**
 	 * Return the underlying Random instance.
-	 * @return 
+	 * @return the underlying Random instance
 	 */
 	public Random getInternalRandom() {
 		return random;

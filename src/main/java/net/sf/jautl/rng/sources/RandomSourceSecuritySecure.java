@@ -65,7 +65,7 @@ public class RandomSourceSecuritySecure implements IRandomizable, IBytesSource, 
 
 	/**
 	 * Return the associated java.security.SecureRandom instance.
-	 * @return 
+	 * @return the associated java.security.SecureRandom instance
 	 */
 	public final SecureRandom getInternalRandom() {
 		return sr;

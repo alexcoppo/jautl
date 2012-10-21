@@ -33,7 +33,7 @@ public class GeneratorsShort {
 	/**
 	 * Generate one random short.
      * @param ibs the IBytesSource to use as entropy source
-     * @return 
+     * @return the generated value
 	 */
 	public static short generate(IBytesSource ibs) {
 		short result = 0;

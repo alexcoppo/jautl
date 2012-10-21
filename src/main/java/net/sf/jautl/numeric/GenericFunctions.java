@@ -33,7 +33,7 @@ public class GenericFunctions {
     /**
      * This method returns the base 10 logarithm.
      * @param value the value of which compute the logarithm
-     * @return 
+     * @return the value of the function
      */
     public static double log10(double value) {
         return Math.log(value) / Constants.LN10;
@@ -43,9 +43,9 @@ public class GenericFunctions {
      * This method computes the pythagorean sum of two numbers.
      * The computation is performed in a numerically safe
      * way.
-     * @param x
-     * @param y
-     * @return 
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the value of the function
      */
     public static double hypot(double x, double y) {
         // Adapted from "Numerical Recipes in Fortran 77: The Art of Scientific Computing" (ISBN 0-521-43064-X)
@@ -69,7 +69,7 @@ public class GenericFunctions {
      * approximation to Pi.
      * @param loPrec the low precision value...
      * @param hiPrec the high precision counterpart.
-     * @return 
+     * @return the value of the function
      */
     public static double exactDigits(double loPrec, double hiPrec) {
         double epsilon = 100 * Double.MIN_VALUE;
@@ -104,7 +104,7 @@ public class GenericFunctions {
      * The pecularity is that it returns 0 when the number is exactly
      * zero instead of the usual +1.
      * @param x
-     * @return 
+     * @return the value of the function
      */
     public static int sign(double x) {
         if (x == 0)
@@ -118,7 +118,7 @@ public class GenericFunctions {
      * conversion in the range [0, 2 * Pi).
      * @param y ordinate
      * @param x abscissa
-     * @return 
+     * @return the value of the function
      */
     public static double atan2(double y, double x) {
         double result = java.lang.Math.atan2(y, x);
@@ -131,7 +131,7 @@ public class GenericFunctions {
      * @param x0 the value returned if alpha == 0
      * @param alpha the ratio of the interpolation
      * @param x1 the value returned if alpha == 1
-     * @return 
+     * @return the value of the function
      */
     public static double lerp(double x0, double alpha, double x1) {
 		return x0 + alpha * (x1 - x0);
@@ -139,8 +139,8 @@ public class GenericFunctions {
 
     /**
      * A cubic s-curve.
-     * @param t
-     * @return
+     * @param t the argument
+     * @return the value of the function
      */
     public static double scurve(double t) {
         return t * t * (3 - 2 * t);
@@ -151,7 +151,7 @@ public class GenericFunctions {
      * @param x the value to be clamped
      * @param min the minimum output value
      * @param max the maximum output value
-     * @return 
+     * @return the value of the function
      */
     public static double clamp(double x, double min, double max) {
         if (x < min)
@@ -165,7 +165,7 @@ public class GenericFunctions {
      * A hard 0 to 1 step.
      * @param x the abscissa
      * @param a the step location
-     * @return 
+     * @return the value of the function 
      */
     public static double step(double x, double a) {
         return (x >= a) ? 1 : 0;
@@ -176,7 +176,7 @@ public class GenericFunctions {
      * @param x the abscissa
      * @param a the step initial location
      * @param b the step final location
-     * @return 
+     * @return the value of the function
      */
     public static double smoothstep(double x, double a, double b) {
         if (x < a) 
@@ -192,7 +192,7 @@ public class GenericFunctions {
      * @param x the abscissa
      * @param a the step initial location
      * @param b the step final location
-     * @return 
+     * @return the value of the function
      */
     public static double dsmoothstep(double x, double a, double b) {
         if (x < a) 
@@ -206,7 +206,7 @@ public class GenericFunctions {
     /**
      * Convert an angle from degrees into radians.
      * @param theta the value to be converted
-     * @return 
+     * @return the converted value
      */
     public static double degsToRads(double theta) {
         return theta / 180 * Constants.PI;
@@ -215,7 +215,7 @@ public class GenericFunctions {
     /**
      * Convert an angle from radians into degrees.
      * @param theta the value to be converted
-     * @return 
+     * @return the converted value
      */
     public static double radsToDegs(double theta) {
         return theta * 180 / Constants.PI;
@@ -224,7 +224,7 @@ public class GenericFunctions {
     /**
      * Clip a value in the [0, 1] range.
      * @param x the value to be clipped
-     * @return 
+     * @return the clipped value
      */
     public static double clip01(double x) {
         if (x < 0) return 0;

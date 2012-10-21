@@ -48,7 +48,7 @@ public class FilenamesFilterExtensions implements FilenameFilter {
 	 * ones. Text comparison is case insensitive.
 	 * @param dir the directory where the file is
 	 * @param name the name of the file
-	 * @return 
+	 * @return the result of the test 
 	 */
 	public boolean accept(File dir, String name) {
 		for (String ext : extensions)

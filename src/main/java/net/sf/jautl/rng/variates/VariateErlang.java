@@ -62,7 +62,7 @@ public class VariateErlang extends VariatesBaseDoublesSource {
 
     /**
      * Return the value of the lambda parameter.
-     * @return
+     * @return the value of the parameter
      */
     public double getLambda() {
         return lambda;
@@ -78,7 +78,7 @@ public class VariateErlang extends VariatesBaseDoublesSource {
 
     /**
      * Draw a variate.
-     * @return 
+     * @return the value of the function
      */
 	public double draw() {
 	    double p = 1.0;

@@ -35,7 +35,7 @@ public class GeneratorsDouble {
 	/**
 	 * Generate one random double.
      * @param ibs the IBytesSource to use as entropy source
-     * @return 
+     * @return the generated value
 	 */
 	public static double generate(IBytesSource ibs) {
 		long tmp = GeneratorsLong.generate(ibs) & MASK_DOUBLE;
@@ -46,7 +46,7 @@ public class GeneratorsDouble {
     /**
      * Generate one random double.
      * @param iis the IIntegersSource to use as entropy source
-     * @return 
+     * @return the generated value
      */
     public static double generate(IIntegersSource iis) {
         long l0 = iis.nextInt();
@@ -62,7 +62,7 @@ public class GeneratorsDouble {
      * @param ibs the IBytesSource to use as entropy source
 	 * @param includeZero true if 0. should be generable
 	 * @param includeOne true if 1. should be generable
-     * @return 
+     * @return the generated value
 	 */
 	public static double generate(IBytesSource ibs, boolean includeZero, boolean includeOne) {
 		double tmp;
@@ -84,7 +84,7 @@ public class GeneratorsDouble {
      * @param iis the IIntegersSource to use as entropy source
 	 * @param includeZero true if 0. should be generable
 	 * @param includeOne true if 1. should be generable
-     * @return 
+     * @return the generated value
      */
 	public static double generate(IIntegersSource iis, boolean includeZero, boolean includeOne) {
 		double tmp;
@@ -106,7 +106,7 @@ public class GeneratorsDouble {
      * @param ids the IDoublesSource to use as entropy source
 	 * @param includeZero true if 0. should be generable
 	 * @param includeOne true if 1. should be generable
-     * @return 
+     * @return the generated value
      */
 	public static double generate(IDoublesSource ids, boolean includeZero, boolean includeOne) {
 		double tmp;

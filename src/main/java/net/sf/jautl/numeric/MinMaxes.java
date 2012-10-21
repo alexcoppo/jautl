@@ -34,7 +34,7 @@ public class MinMaxes {
      * The minimum between two numbers.
      * @param x the first argument
      * @param y the second argument
-     * @return 
+     * @return the result of the function
      */
     public static double min(double x, double y) {
         return Math.min(x, y);
@@ -45,7 +45,7 @@ public class MinMaxes {
      * @param x the first argument
      * @param y the second argument
      * @param z the third argument
-     * @return 
+     * @return the result of the function
      */
     public static double min(double x, double y, double z) {
         return Math.min(Math.min(x, y), z);
@@ -55,7 +55,7 @@ public class MinMaxes {
      * The minimum of absolute value between two numbers.
      * @param x the first argument
      * @param y the second argument
-     * @return 
+     * @return the result of the function
      */
     public static double absMin(double x, double y) {
         return (Math.abs(x) < Math.abs(y)) ? x : y;
@@ -66,7 +66,7 @@ public class MinMaxes {
      * @param x the first argument
      * @param y the second argument
      * @param z the third argument
-     * @return 
+     * @return the result of the function
      */
     public static double absMin(double x, double y, double z) {
         return absMin(absMin(x, y), z);
@@ -76,7 +76,7 @@ public class MinMaxes {
      * The maximum between two numbers.
      * @param x the first argument
      * @param y the second argument
-     * @return 
+     * @return the result of the function
      */
     public static double max(double x, double y) {
         return Math.max(x, y);
@@ -87,7 +87,7 @@ public class MinMaxes {
      * @param x the first argument
      * @param y the second argument
      * @param z the third argument
-     * @return 
+     * @return the result of the function
      */
     public static double max(double x, double y, double z) {
         return max(max(x, y), z);
@@ -97,7 +97,7 @@ public class MinMaxes {
      * The maximum of absolute value between two numbers.
      * @param x the first argument
      * @param y the second argument
-     * @return 
+     * @return the result of the function
      */
     public static double absMax(double x, double y) {
         return (Math.abs(x) < Math.abs(y)) ? y : x;
@@ -108,7 +108,7 @@ public class MinMaxes {
      * @param x the first argument
      * @param y the second argument
      * @param z the third argument
-     * @return 
+     * @return the result of the function
      */
     public static double absMax(double x, double y, double z) {
         return absMax(absMax(x, y), z);
