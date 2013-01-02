@@ -74,6 +74,14 @@ public class DoubleComplex {
     }
 
     /**
+     * Copy constructor.
+     * @param z the template instance
+     */
+    public DoubleComplex(FloatComplex z) {
+        assign(z);
+    }
+
+    /**
      * Create a complex, given its modulus and argument.
      * @param rho the modulus
      * @param theta the argument
@@ -90,6 +98,15 @@ public class DoubleComplex {
     public final void assign(DoubleComplex z) {
         re = z.re;
         im = z.im;
+    }
+
+    /**
+     * Assign "operator"
+     * @param z the source complex.
+     */
+    public final void assign(FloatComplex z) {
+        re = z.getRe();
+        im = z.getIm();
     }
 
     /**
