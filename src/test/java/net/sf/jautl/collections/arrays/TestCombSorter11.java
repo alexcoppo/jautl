@@ -1,17 +1,17 @@
 package net.sf.jautl.collections.arrays;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class TestCombSorter11 {
 	private int[] numbers;
 
-	@Before
+	@BeforeMethod
 	public void allocate() {
 		numbers = new int[20];
 	}
 
-	@After
+	@AfterMethod
 	public void free() {
 		numbers = null;
 	}
@@ -83,13 +83,13 @@ public class TestCombSorter11 {
 				if (numbers[index] == soughtFor)
 					count++;
 			
-			assertTrue(count == 1);
+			Assert.assertTrue(count == 1);
 		}
 	}
 	
 	private void checkOrder() {
 		for (int i = 0; i < numbers.length - 1; i++)
-			assertTrue(numbers[i] <=  numbers[i + 1]);
+			Assert.assertTrue(numbers[i] <=  numbers[i + 1]);
 	}
 
 	private class SA implements IndexedCollectionSortAPI {
@@ -108,6 +108,5 @@ public class TestCombSorter11 {
 			numbers[i] = numbers[j];
 			numbers[j] = tmp;
 		}
-		
 	}
 }
