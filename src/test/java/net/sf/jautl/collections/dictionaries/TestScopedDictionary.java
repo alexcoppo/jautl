@@ -26,21 +26,21 @@
 */
 package net.sf.jautl.collections.dictionaries;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class TestScopedDictionary {
 	@Test
 	public void testIsSingle() {
 		ScopedDictionary sd = new ScopedDictionary();
 
-		assertTrue(sd.isSingle());
+		Assert.assertTrue(sd.isSingle());
 
 		sd.createScope();
-		assertFalse(sd.isSingle());
+		Assert.assertFalse(sd.isSingle());
 		
 		sd.deleteScope();
-		assertTrue(sd.isSingle());
+		Assert.assertTrue(sd.isSingle());
 	}
 
 	@Test
@@ -50,39 +50,39 @@ public class TestScopedDictionary {
 		sd.declareLocal("local");
 		sd.declareGlobal("global");
 		
-		assertTrue(sd.exists("local"));
-		assertTrue(sd.exists("global"));
+		Assert.assertTrue(sd.exists("local"));
+		Assert.assertTrue(sd.exists("global"));
 		
 		sd.deleteScope();
 
-		assertFalse(sd.exists("local"));
-		assertTrue(sd.exists("global"));
+		Assert.assertFalse(sd.exists("local"));
+		Assert.assertTrue(sd.exists("global"));
 	}
 
 	@Test
 	public void testExistsLocal() {
 		ScopedDictionary sd = create(1);
 		
-		assertFalse(sd.existsLocal("foo"));
+		Assert.assertFalse(sd.existsLocal("foo"));
 		
 		sd.declareLocal("foo");
-		assertTrue(sd.existsLocal("foo"));
+		Assert.assertTrue(sd.existsLocal("foo"));
 		
 		sd.removeLocal("foo");
-		assertFalse(sd.existsLocal("foo"));
+		Assert.assertFalse(sd.existsLocal("foo"));
 	}
 
 	@Test
 	public void testExistsGlobal() {
 		ScopedDictionary sd = create(1);
 		
-		assertFalse(sd.existsGlobal("foo"));
+		Assert.assertFalse(sd.existsGlobal("foo"));
 		
 		sd.declareGlobal("foo");
-		assertTrue(sd.existsGlobal("foo"));
+		Assert.assertTrue(sd.existsGlobal("foo"));
 		
 		sd.removeGlobal("foo");
-		assertFalse(sd.existsGlobal("foo"));
+		Assert.assertFalse(sd.existsGlobal("foo"));
 	}
 
 	@Test
@@ -92,9 +92,9 @@ public class TestScopedDictionary {
 		sd.declareGlobal("global");
 		sd.declareLocal("local");
 		
-		assertTrue(sd.exists("local"));
-		assertTrue(sd.exists("global"));
-		assertFalse(sd.exists("foobar"));
+		Assert.assertTrue(sd.exists("local"));
+		Assert.assertTrue(sd.exists("global"));
+		Assert.assertFalse(sd.exists("foobar"));
 	}
 
 	@Test
@@ -102,12 +102,12 @@ public class TestScopedDictionary {
 		ScopedDictionary sd = create(1);
 
 		sd.declareLocal("foo");
-		assertTrue(sd.getLocal("foo") == null);
+		Assert.assertTrue(sd.getLocal("foo") == null);
 		
 		Object o = new Object();
 		
 		sd.setLocal("foo", o);
-		assertTrue(sd.getLocal("foo") == o);
+		Assert.assertTrue(sd.getLocal("foo") == o);
 	}
 
 	@Test
@@ -115,12 +115,12 @@ public class TestScopedDictionary {
 		ScopedDictionary sd = create(1);
 
 		sd.declareGlobal("foo");
-		assertTrue(sd.getGlobal("foo") == null);
+		Assert.assertTrue(sd.getGlobal("foo") == null);
 		
 		Object o = new Object();
 		
 		sd.setGlobal("foo", o);
-		assertTrue(sd.getGlobal("foo") == o);
+		Assert.assertTrue(sd.getGlobal("foo") == o);
 	}
 
 	@Test
@@ -136,8 +136,8 @@ public class TestScopedDictionary {
 		sd.set("global", og);
 		sd.set("local", ol);
 		
-		assertTrue(sd.get("global") == og);
-		assertTrue(sd.get("local") == ol);
+		Assert.assertTrue(sd.get("global") == og);
+		Assert.assertTrue(sd.get("local") == ol);
 	}
 
 	@Test
@@ -148,8 +148,8 @@ public class TestScopedDictionary {
 		sd.declareLocal("local");
 		
 		sd.removeLocalAll();
-		assertFalse(sd.exists("local"));
-		assertTrue(sd.exists("global"));
+		Assert.assertFalse(sd.exists("local"));
+		Assert.assertTrue(sd.exists("global"));
 	}
 
 	@Test
@@ -160,8 +160,8 @@ public class TestScopedDictionary {
 		sd.declareLocal("local");
 		
 		sd.removeGlobalAll();
-		assertTrue(sd.exists("local"));
-		assertFalse(sd.exists("global"));
+		Assert.assertTrue(sd.exists("local"));
+		Assert.assertFalse(sd.exists("global"));
 	}
 
 	private ScopedDictionary create(int scopeCount) {

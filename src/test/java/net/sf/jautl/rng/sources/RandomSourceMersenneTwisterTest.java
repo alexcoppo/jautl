@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.rng.sources;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.*;
+import org.testng.Assert;
 
 public class RandomSourceMersenneTwisterTest {
 	@Test
@@ -41,10 +41,10 @@ public class RandomSourceMersenneTwisterTest {
         int result;
 
         result = rsmt.nextInt();
-        assertEquals(result, 1067595299);
+        Assert.assertEquals(result, 1067595299);
         result = rsmt.nextInt();
-        assertEquals(result, 955945823);
+        Assert.assertEquals(result, 955945823);
         result = rsmt.nextInt();
-        assertEquals(result, 477289528);
+        Assert.assertEquals(result, 477289528);
     }
 }

@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility.mutables;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class MutableTestString {
 	@Test
@@ -35,6 +35,6 @@ public class MutableTestString {
 		MutableString mutable = new MutableString();
 		
 		mutable.set("foobar");
-		assertTrue(mutable.get().equals("foobar"));
+		Assert.assertEquals(mutable.get(), "foobar");
 	}
 }

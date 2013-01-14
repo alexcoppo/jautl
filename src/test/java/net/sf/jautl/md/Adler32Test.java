@@ -26,18 +26,29 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.*;
 
-public class Adler32Test {
-	private DigestEngine md;
-
-    @Before
+public class Adler32Test extends TesterBase {
+    @BeforeTest()
 	public void setUp() {
-		md = new Adler32();
-		md.initiate();
+		de = new Adler32();
 	}
-	
+
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "", "01000000" },
+        { "a", "62006200" },
+        { "abc", "27014d02" },
+        { "message digest", "86057529" },
+        { "abcdefghijklmnopqrstuvwxyz", "200b8690" },
+        { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", "0c15db8a" },
+        { "12345678901234567890123456789012345678901234567890123456789012345678901234567890", "6910b697" },
+        { "Wikipedia", "9803e611" }
+        };
+    }
+}
+    /*
 	@Test
 	public void test1() {
 		md.add("");
@@ -101,4 +112,4 @@ public class Adler32Test {
 		String result = md.getAsHex();
 		assertTrue(result.equalsIgnoreCase("9803e611"));
 	}
-}
+    */

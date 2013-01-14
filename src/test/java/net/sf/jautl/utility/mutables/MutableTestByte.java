@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility.mutables;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class MutableTestByte {
 	@Test
@@ -35,6 +35,6 @@ public class MutableTestByte {
 		MutableByte mutable = new MutableByte();
 		
 		mutable.set((byte)1);
-		assertTrue(mutable.get() == (byte)1);
+		Assert.assertTrue(mutable.get() == (byte)1);
 	}
 }

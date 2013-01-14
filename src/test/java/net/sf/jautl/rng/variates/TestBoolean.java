@@ -1,17 +1,15 @@
 package net.sf.jautl.rng.variates;
 
+import net.sf.jautl.rng.interfaces.IDoublesSource;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import net.sf.jautl.rng.interfaces.IDoublesSource;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class TestBoolean {
 	private IDoublesSource ids;
 	
-	@Before
+	@BeforeTest
 	public void setUp() {
 		ids = mock(IDoublesSource.class);
 	}
@@ -26,13 +24,13 @@ public class TestBoolean {
 		
 		VariateBoolean vb = new VariateBoolean(ids);
 		vb.setProbability(0.3);
-		assert(vb.draw() == true);
-		assert(vb.draw() == true);
-		assert(vb.draw() == false);
-		assert(vb.draw() == false);
+		Assert.assertTrue(vb.draw() == true);
+		Assert.assertTrue(vb.draw() == true);
+		Assert.assertTrue(vb.draw() == false);
+		Assert.assertTrue(vb.draw() == false);
 	}
 	
-	@After
+	@AfterTest
 	public void tearDown() {
 		ids = null;
 	}

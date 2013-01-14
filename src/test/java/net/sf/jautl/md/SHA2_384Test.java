@@ -26,41 +26,20 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
+import org.testng.annotations.*;
 
-import static org.junit.Assert.*;
-
-public class SHA2_384Test {
-	private DigestEngine md;
-
-    @Before
+public class SHA2_384Test extends TesterBase {
+    @BeforeTest()
 	public void setUp() {
-		md = new SHA2_384();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7"));
+		de = new SHA2_384();
 	}
 
-    @Test
-	public void test2() {
-		md.add("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("09330c33f71147e83d192fc782cd1b4753111b173b3b05d22fa08086e3b0f712fcc7c71a557e2db966c3e9fa91746039"));
-	}
-
-    @Test
-	public void test1M() {
-        for (int index = 0; index < 1000000; index++)
-            md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("9d0e1809716474cb086e834e310a4a1ced149e9c00f248527972cec5704c2a5b07b8b3dc38ecc4ebae97ddd87f3d8985"));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "abc", "cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7" },
+		{ "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu", "09330c33f71147e83d192fc782cd1b4753111b173b3b05d22fa08086e3b0f712fcc7c71a557e2db966c3e9fa91746039" },
+        { null, "9d0e1809716474cb086e834e310a4a1ced149e9c00f248527972cec5704c2a5b07b8b3dc38ecc4ebae97ddd87f3d8985" }
+        };
+    }
 }

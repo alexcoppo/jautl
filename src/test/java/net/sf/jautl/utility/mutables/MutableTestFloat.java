@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility.mutables;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class MutableTestFloat {
 	@Test
@@ -35,6 +35,6 @@ public class MutableTestFloat {
 		MutableFloat mutable = new MutableFloat();
 		
 		mutable.set(1f);
-		assertTrue(mutable.get() == 1f);
+		Assert.assertTrue(mutable.get() == 1f);
 	}
 }

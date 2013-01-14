@@ -26,49 +26,33 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
-public class SHA2_512Test {
-	private DigestEngine md;
+public class SHA2_512Test extends TesterBase {
+    @BeforeTest()
+    void setUp() {
+        de = new SHA2_512();
+    }
 
-    @Before
-	public void setUp() {
-		md = new SHA2_512();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase(
-            "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a" +
-            "2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f")
-            );
-	}
-
-    @Test
-	public void test2() {
-		md.add("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase(
-            "8e959b75dae313da8cf4f72814fc143f8f7779c6eb9f7fa17299aeadb6889018" +
-            "501d289e4900f7e4331b99dec4b5433ac7d329eeb6dd26545e96e55b874be909")
-            );
-	}
-
-    @Test
-	public void test1M() {
-        for (int index = 0; index < 1000000; index++)
-            md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase(
-            "e718483d0ce769644e2e42c7bc15b4638e1f98b13b2044285632a803afa973eb" +
-            "de0ff244877ea60a4cb0432ce577c31beb009c5c2c49aa2e4eadb217ad8cc09b"
-            ));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        {
+        "abc",
+        "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a" +
+        "2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f"
+        },
+        {
+        "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu",
+        "8e959b75dae313da8cf4f72814fc143f8f7779c6eb9f7fa17299aeadb6889018" +
+        "501d289e4900f7e4331b99dec4b5433ac7d329eeb6dd26545e96e55b874be909"
+        },
+        {
+        null,
+        "e718483d0ce769644e2e42c7bc15b4638e1f98b13b2044285632a803afa973eb" +
+        "de0ff244877ea60a4cb0432ce577c31beb009c5c2c49aa2e4eadb217ad8cc09b"
+        }
+        };
+    }
 }

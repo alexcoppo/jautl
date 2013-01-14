@@ -26,89 +26,26 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
+import org.testng.annotations.*;
 
-import static org.junit.Assert.*;
-
-public class RIPEMD128Test {
-	private DigestEngine md;
-
-    @Before
+public class RIPEMD128Test extends TesterBase {
+    @BeforeTest()
 	public void setUp() {
-		md = new RIPEMD128();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.add("");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("CDF26213A150DC3ECB610F18F6B38B46"));
+		de = new RIPEMD128();
 	}
 
-    @Test
-	public void test2() {
-		md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("86BE7AFA339D0FC7CFC785E72F578D33"));
-	}
-
-    @Test
-	public void test3() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("C14A12199C66E4BA84636B0F69144C77"));
-	}
-
-    @Test
-	public void test4() {
-		md.add("message digest");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("9E327B3D6E523062AFC1132D7DF9D1B8"));
-	}
-
-    @Test
-	public void test5() {
-		md.add("abcdefghijklmnopqrstuvwxyz");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("FD2AA607F71DC8F510714922B371834E"));
-	}
-
-    @Test
-	public void test6() {
-		md.add("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("A1AA0689D0FAFA2DDC22E88B49133A06"));
-	}
-
-    @Test
-	public void test7() {
-		md.add("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("D1E959EB179C911FAEA4624C60C5C702"));
-	}
-
-    @Test
-	public void test8() {
-		md.add("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("3F45EF194732C2DBB2C4A2C769795FA3"));
-	}
-
-    @Test
-	public void test1M() {
-        for (int index = 0; index < 1000000; index++)
-            md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("4a7f5723f954eba1216c9d8f6320431f"));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "", "cdf26213a150dc3ecb610f18f6b38b46" },
+        { "a", "86be7afa339d0fc7cfc785e72f578d33" },
+        { "abc", "c14a12199c66e4ba84636b0f69144c77" },
+        { "message digest", "9e327b3d6e523062afc1132d7df9d1b8" },
+        { "abcdefghijklmnopqrstuvwxyz", "fd2aa607f71dc8f510714922b371834e" },
+        { "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq", "a1aa0689d0fafa2ddc22e88b49133a06" },
+        { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", "d1e959eb179c911faea4624c60c5c702" },
+        { "12345678901234567890123456789012345678901234567890123456789012345678901234567890", "3f45ef194732c2dbb2c4a2c769795fa3" },
+        { null, "4a7f5723f954eba1216c9d8f6320431f" }
+        };
+    }
 }

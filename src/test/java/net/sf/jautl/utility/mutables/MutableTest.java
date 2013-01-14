@@ -27,8 +27,8 @@
 package net.sf.jautl.utility.mutables;
 
 import java.util.Date;
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class MutableTest {
 	@Test
@@ -37,6 +37,6 @@ public class MutableTest {
 
 		Date d = new Date();
 		mutable.set(d);
-		assertTrue(mutable.get() == d);
+		Assert.assertTrue(mutable.get() == d);
 	}
 }

@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility.mutables;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class MutableTestShort {
 	@Test
@@ -35,6 +35,6 @@ public class MutableTestShort {
 		MutableShort mutable = new MutableShort();
 		
 		mutable.set((short)1);
-		assertTrue(mutable.get() == (short)1);
+		Assert.assertTrue(mutable.get() == (short)1);
 	}
 }

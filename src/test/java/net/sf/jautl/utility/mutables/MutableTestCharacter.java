@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility.mutables;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class MutableTestCharacter {
 	@Test
@@ -35,6 +35,6 @@ public class MutableTestCharacter {
 		MutableCharacter mutable = new MutableCharacter();
 		
 		mutable.set('c');
-		assertTrue(mutable.get() == 'c');
+		Assert.assertTrue(mutable.get() == 'c');
 	}
 }

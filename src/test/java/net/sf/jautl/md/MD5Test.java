@@ -26,71 +26,24 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.*;
 
-public class MD5Test {
-	private DigestEngine md;
-
-    @Before
+public class MD5Test extends TesterBase {
+    @BeforeTest()
 	public void setUp() {
-		md = new MD5();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.add("");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("d41d8cd98f00b204e9800998ecf8427e"));
+		de = new MD5();
 	}
 
-    @Test
-	public void test2() {
-		md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("0cc175b9c0f1b6a831c399e269772661"));
-	}
-
-    @Test
-	public void test3() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("900150983cd24fb0d6963f7d28e17f72"));
-	}
-
-    @Test
-	public void test4() {
-		md.add("message digest");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("f96b697d7cb7938d525a2f31aaf161d0"));
-	}
-
-    @Test
-	public void test5() {
-		md.add("abcdefghijklmnopqrstuvwxyz");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("c3fcd3d76192e4007dfb496cca67e13b"));
-	}
-
-    @Test
-	public void test6() {
-		md.add("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("d174ab98d277d9f5a5611c2c9f419d9f"));
-	}
-
-    @Test
-	public void test7() {
-		md.add("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("57edf4a22be3c955ac49da2e2107b67a"));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "" , "d41d8cd98f00b204e9800998ecf8427e" },
+        { "a" , "0cc175b9c0f1b6a831c399e269772661" },
+        { "abc" , "900150983cd24fb0d6963f7d28e17f72" },
+        { "message digest" , "f96b697d7cb7938d525a2f31aaf161d0" },
+        { "abcdefghijklmnopqrstuvwxyz" , "c3fcd3d76192e4007dfb496cca67e13b" },
+        { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" , "d174ab98d277d9f5a5611c2c9f419d9f" },
+        { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "57edf4a22be3c955ac49da2e2107b67a" }
+        };
+    }
 }

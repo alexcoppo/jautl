@@ -26,28 +26,28 @@
 */
 package net.sf.jautl.collections.matricies;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class BitMatrixTest {
 	@Test
 	public void testEmpty() {
 		BitMatrix bm = new BitMatrix();
 		
-		assertTrue(bm.isEmpty());
-		assertTrue(bm.getWidth() == 0);
-		assertTrue(bm.getHeight() == 0);
-		assertTrue(bm.getSize() == 0);
+		Assert.assertTrue(bm.isEmpty());
+		Assert.assertTrue(bm.getWidth() == 0);
+		Assert.assertTrue(bm.getHeight() == 0);
+		Assert.assertTrue(bm.getSize() == 0);
 	}
 
 	@Test
 	public void testNotEmpty() {
 		BitMatrix bm = new BitMatrix(4, 3);
 		
-		assertFalse(bm.isEmpty());
-		assertTrue(bm.getWidth() == 4);
-		assertTrue(bm.getHeight() == 3);
-		assertTrue(bm.getSize() == 12);
+		Assert.assertFalse(bm.isEmpty());
+		Assert.assertTrue(bm.getWidth() == 4);
+		Assert.assertTrue(bm.getHeight() == 3);
+		Assert.assertTrue(bm.getSize() == 12);
 	}
 
 	@Test
@@ -55,9 +55,9 @@ public class BitMatrixTest {
 		BitMatrix bm = new BitMatrix(4, 3);
 		
 		bm.setRC(1, 2, true);
-		assertTrue(bm.getRC(1, 2));
+		Assert.assertTrue(bm.getRC(1, 2));
 		bm.setXY(2, 1, true);
-		assertTrue(bm.getXY(2, 1));
+		Assert.assertTrue(bm.getXY(2, 1));
 	}
 
 	@Test
@@ -65,56 +65,56 @@ public class BitMatrixTest {
 		BitMatrix bm = new BitMatrix(4, 4);
 		
 		bm.setRC(1, 2, true);
-		assertTrue(bm.getXY(2, 2));
+		Assert.assertTrue(bm.getXY(2, 2));
 	}
 
 	@Test
 	public void testRealloc() {
 		BitMatrix bm = new BitMatrix(4, 4);
 		
-		assertFalse(bm.resize(16, 1));
-		assertTrue(bm.getWidth() == 16);
-		assertTrue(bm.getHeight() == 1);
-		assertTrue(bm.resize(8, 3));
-		assertTrue(bm.getWidth() == 8);
-		assertTrue(bm.getHeight() == 3);
+		Assert.assertFalse(bm.resize(16, 1));
+		Assert.assertTrue(bm.getWidth() == 16);
+		Assert.assertTrue(bm.getHeight() == 1);
+		Assert.assertTrue(bm.resize(8, 3));
+		Assert.assertTrue(bm.getWidth() == 8);
+		Assert.assertTrue(bm.getHeight() == 3);
 	}
 	
 	@Test
 	public void testIsInside() {
 		BitMatrix bm = new BitMatrix(2, 4);
 		
-		assertTrue(bm.isInsideRC(1, 1));
-		assertFalse(bm.isInsideRC(-1, 1));
-		assertFalse(bm.isInsideRC(1, -1));
-		assertFalse(bm.isInsideRC(2, 2));
-		assertFalse(bm.isInsideRC(1, 4));
+		Assert.assertTrue(bm.isInsideRC(1, 1));
+		Assert.assertFalse(bm.isInsideRC(-1, 1));
+		Assert.assertFalse(bm.isInsideRC(1, -1));
+		Assert.assertFalse(bm.isInsideRC(2, 2));
+		Assert.assertFalse(bm.isInsideRC(1, 4));
 
-		assertTrue(bm.isInsideXY(1, 1));
-		assertFalse(bm.isInsideXY(-1, 1));
-		assertFalse(bm.isInsideXY(1, -1));
-		assertFalse(bm.isInsideXY(2, 2));
-		assertFalse(bm.isInsideXY(1, 4));
+		Assert.assertTrue(bm.isInsideXY(1, 1));
+		Assert.assertFalse(bm.isInsideXY(-1, 1));
+		Assert.assertFalse(bm.isInsideXY(1, -1));
+		Assert.assertFalse(bm.isInsideXY(2, 2));
+		Assert.assertFalse(bm.isInsideXY(1, 4));
 	}
 	
 	@Test
 	public void testClip() {
 		BitMatrix bm = new BitMatrix(2, 4);
 		
-		assertTrue(bm.clipX(-1) == 0);
-		assertTrue(bm.clipX(1) == 1);
-		assertTrue(bm.clipX(3) == 1);
+		Assert.assertTrue(bm.clipX(-1) == 0);
+		Assert.assertTrue(bm.clipX(1) == 1);
+		Assert.assertTrue(bm.clipX(3) == 1);
 
-		assertTrue(bm.clipC(-1) == 0);
-		assertTrue(bm.clipC(1) == 1);
-		assertTrue(bm.clipC(3) == 1);
+		Assert.assertTrue(bm.clipC(-1) == 0);
+		Assert.assertTrue(bm.clipC(1) == 1);
+		Assert.assertTrue(bm.clipC(3) == 1);
 		
-		assertTrue(bm.clipY(-1) == 0);
-		assertTrue(bm.clipY(4) == 3);
-		assertTrue(bm.clipY(1) == 1);
+		Assert.assertTrue(bm.clipY(-1) == 0);
+		Assert.assertTrue(bm.clipY(4) == 3);
+		Assert.assertTrue(bm.clipY(1) == 1);
 		
-		assertTrue(bm.clipR(-1) == 0);
-		assertTrue(bm.clipR(4) == 3);
-		assertTrue(bm.clipR(1) == 1);
+		Assert.assertTrue(bm.clipR(-1) == 0);
+		Assert.assertTrue(bm.clipR(4) == 3);
+		Assert.assertTrue(bm.clipR(1) == 1);
 	}
 }

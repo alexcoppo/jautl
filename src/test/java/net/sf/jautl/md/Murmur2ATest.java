@@ -26,71 +26,24 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.*;
 
-public class Murmur2ATest {
-	private DigestEngine md;
-
-    @Before
+public class Murmur2ATest extends TesterBase {
+    @BeforeTest()
 	public void setUp() {
-		md = new Murmur2A();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.add("");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("00000000"));
+		de = new Murmur2A();
 	}
 
-    @Test
-	public void test2() {
-		md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("8b880308"));
-	}
-
-    @Test
-	public void test3() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("679f5811"));
-	}
-
-    @Test
-	public void test4() {
-		md.add("message digest");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("c3691f31"));
-	}
-
-    @Test
-	public void test5() {
-		md.add("abcdefghijklmnopqrstuvwxyz");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("e35fb08d"));
-	}
-
-    @Test
-	public void test6() {
-		md.add("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("e17df8ab"));
-	}
-
-    @Test
-	public void test7() {
-		md.add("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("c7a9ca8d"));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "" , "00000000" },
+        { "a" , "8b880308" },
+        { "abc" , "679f5811" },
+        { "message digest" , "c3691f31" },
+        { "abcdefghijklmnopqrstuvwxyz" , "e35fb08d" },
+        { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" , "e17df8ab" },
+        { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "c7a9ca8d" }
+        };
+    }
 }

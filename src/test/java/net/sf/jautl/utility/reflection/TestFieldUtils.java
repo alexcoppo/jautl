@@ -30,8 +30,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class TestFieldUtils {
     @Retention(RetentionPolicy.RUNTIME)
@@ -50,7 +50,7 @@ public class TestFieldUtils {
         final double v = 3.14;
         
         FieldUtils.setValue(obj, "dblField", new Double(v));
-        assertTrue(obj.dblField == v);
+        Assert.assertTrue(obj.dblField == v);
     }
     
     @Test
@@ -61,7 +61,7 @@ public class TestFieldUtils {
         obj.dblField = v;
         
         Double dbl = (Double)FieldUtils.getValue(obj, "dblField");
-        assertTrue(dbl.doubleValue() == v);
+        Assert.assertTrue(dbl.doubleValue() == v);
     }
     
     @Test
@@ -69,11 +69,11 @@ public class TestFieldUtils {
         DummyPOJO obj = new DummyPOJO();
         
         String[] names = FieldUtils.getFieldNames(obj);
-        assertTrue(names.length == 2);
+        Assert.assertTrue(names.length == 2);
 
         Arrays.sort(names);
-        assertTrue(Arrays.binarySearch(names, "dblField") >= 0);
-        assertTrue(Arrays.binarySearch(names, "strField") >= 0);
+        Assert.assertTrue(Arrays.binarySearch(names, "dblField") >= 0);
+        Assert.assertTrue(Arrays.binarySearch(names, "strField") >= 0);
     }
 
     @Test
@@ -82,8 +82,8 @@ public class TestFieldUtils {
         
         String[] names = FieldUtils.getFieldNamesByAttribute(obj, FooBar.class);
                 
-        assertTrue(names.length == 1);
-        assertTrue(names[0].equals("dblField"));
+        Assert.assertTrue(names.length == 1);
+        Assert.assertTrue(names[0].equals("dblField"));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class TestFieldUtils {
         
         Field[] fields = FieldUtils.getFieldsByAttribute(obj, FooBar.class);
                 
-        assertTrue(fields.length == 1);
-        assertTrue(fields[0].getName().equals("dblField"));
+        Assert.assertTrue(fields.length == 1);
+        Assert.assertTrue(fields[0].getName().equals("dblField"));
     }
 }

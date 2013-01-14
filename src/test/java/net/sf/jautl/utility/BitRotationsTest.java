@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
 public class BitRotationsTest {
 	@Test
@@ -46,7 +46,7 @@ public class BitRotationsTest {
 		
 		for (int places = 0; places < 8; places++) {
 			String rvalue = BitRotations.left(bitfields[0], places);
-			assertTrue(rvalue.equals(bitfields[places]));
+			Assert.assertTrue(rvalue.equals(bitfields[places]));
 		}
 	}
 
@@ -66,7 +66,7 @@ public class BitRotationsTest {
 		
 		for (int places = 0; places < 8; places++) {
 			String rvalue = BitRotations.right(bitfields[0], places);
-			assertTrue(rvalue.equals(bitfields[places]));
+			Assert.assertTrue(rvalue.equals(bitfields[places]));
 		}
 	}
 
@@ -80,7 +80,7 @@ public class BitRotationsTest {
 			byte rotated = (byte)Integer.parseInt(rvalue, 2);
 			
 			byte result = BitRotations.left(original, places);
-			assertTrue(result == rotated);
+			Assert.assertTrue(result == rotated);
 		}
 	}
 
@@ -94,7 +94,7 @@ public class BitRotationsTest {
 			byte rotated = (byte)Integer.parseInt(rvalue, 2);
 			
 			byte result = BitRotations.right(original, places);
-			assertTrue(result == rotated);
+			Assert.assertTrue(result == rotated);
 		}
 	}
 
@@ -108,7 +108,7 @@ public class BitRotationsTest {
 			short rotated = (short)Integer.parseInt(rvalue, 2);
 			
 			short result = BitRotations.left(original, places);
-			assertTrue(result == rotated);
+			Assert.assertTrue(result == rotated);
 		}
 	}
 
@@ -121,7 +121,7 @@ public class BitRotationsTest {
 			short rotated = (short)Integer.parseInt(rvalue, 2);
 			
 			short result = BitRotations.right(original, places);
-			assertTrue(result == rotated);
+			Assert.assertTrue(result == rotated);
 		}
 	}
 
@@ -135,7 +135,7 @@ public class BitRotationsTest {
 			int rotated = (int)Long.parseLong(rvalue, 2);
 			
 			int result = BitRotations.left(original, places);
-			assertTrue(result == rotated);
+			Assert.assertTrue(result == rotated);
 		}
 	}
 
@@ -149,7 +149,7 @@ public class BitRotationsTest {
 			int rotated = (int)Long.parseLong(rvalue, 2);
 			
 			int result = BitRotations.right(original, places);
-			assertTrue(result == rotated);
+			Assert.assertTrue(result == rotated);
 		}
 	}
 }

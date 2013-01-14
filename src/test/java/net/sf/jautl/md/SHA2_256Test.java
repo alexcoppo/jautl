@@ -26,40 +26,20 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.*;
 
-public class SHA2_256Test {
-	private DigestEngine md;
-
-    @Before
-    public void setUp() {
-		md = new SHA2_256();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"));
+public class SHA2_256Test extends TesterBase {
+    @BeforeTest()
+	public void setUp() {
+		de = new SHA2_256();
 	}
 
-    @Test
-	public void test2() {
-		md.add("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1"));
-	}
-
-    @Test
-	public void test1M() {
-        for (int index = 0; index < 1000000; index++)
-            md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0"));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "abc", "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad" },
+        { "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq", "248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1" },
+        { null, "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0" }
+        };
+    }
 }

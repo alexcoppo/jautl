@@ -26,9 +26,8 @@
 */
 package net.sf.jautl.rng.sources;
 
-import org.junit.*;
-import static org.junit.Assert.*;
-
+import org.testng.Assert;
+import org.testng.annotations.*;
 import net.sf.jautl.rng.interfaces.GeneratorsByte;
 
 public class RandomSourceRC4Test {
@@ -52,6 +51,6 @@ public class RandomSourceRC4Test {
         };
             
         for (int index = 0; index < res.length; index++)
-        	assertTrue(res[index] == expected[index]);
+        	Assert.assertTrue(res[index] == expected[index]);
 	}
 }

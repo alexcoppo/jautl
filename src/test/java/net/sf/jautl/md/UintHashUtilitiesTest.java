@@ -26,43 +26,43 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class UintHashUtilitiesTest {
 	@Test
 	public void testWang() {
 		int result = UintHashUtilities.wang(0xcafebeef);
-		assertTrue(result == 0xd1d44228);
+		Assert.assertTrue(result == 0xd1d44228);
 	}
 
 	@Test
 	public void testJenkins() {
 		int result = UintHashUtilities.jenkins(0xcafebeef);
-		assertTrue(result == 0x80de37fe);
+		Assert.assertTrue(result == 0x80de37fe);
 	}
 
 	@Test
 	public void testWard() {
 		int result = UintHashUtilities.ward(0xcafebeef);
-		assertTrue(result == 0x56edb9d5);
+		Assert.assertTrue(result == 0x56edb9d5);
 	}
 
 	@Test
 	public void testMix() {
         int result = UintHashUtilities.mix(0xcafebeef, 0xfeedbeef, 0xcafebabe);
-		assertTrue(result == 0x991d46cb);
+		Assert.assertTrue(result == 0x991d46cb);
 	}
 
 	@Test
 	public void testMurmur2() {
         int result = UintHashUtilities.murmur2(0xcafebeef, 0xfeedbeef);
-		assertTrue(result == 0x7bc1962e);
+		Assert.assertTrue(result == 0x7bc1962e);
 	}
 
 	@Test
 	public void testMurmur3fmix() {
         int result = UintHashUtilities.murmur3fmix(0xcafebeef);
-		assertTrue(result == 0x562ba297);
+		Assert.assertTrue(result == 0x562ba297);
 	}
 }

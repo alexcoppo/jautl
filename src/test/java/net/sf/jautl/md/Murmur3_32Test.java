@@ -26,70 +26,24 @@
 */
 package net.sf.jautl.md;
 
-import org.junit.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.*;
 
-public class Murmur3_32Test {
-	private DigestEngine md;
-
-    @Before
+public class Murmur3_32Test extends TesterBase {
+    @BeforeTest()
 	public void setUp() {
-		md = new Murmur3_32();
-		md.initiate();
-	}
-	
-    @Test
-	public void test1() {
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("b7284e51"));
+		de = new Murmur3_32();
 	}
 
-    @Test
-	public void test2() {
-		md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("395dbaa1"));
-	}
-
-    @Test
-	public void test3() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("36efded2"));
-	}
-
-    @Test
-	public void test4() {
-		md.add("message digest");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("34216550"));
-	}
-
-    @Test
-	public void test5() {
-		md.add("abcdefghijklmnopqrstuvwxyz");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("6d34b91c"));
-	}
-
-    @Test
-	public void test6() {
-		md.add("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("f3b501bc"));
-	}
-
-    @Test
-	public void test7() {
-		md.add("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("ba760ada"));
-	}
+    @DataProvider(name="test-vectors")
+    public Object[][] testVectors() {
+        return new Object[][] {
+        { "", "b7284e51" },
+        { "a" , "395dbaa1" },
+        { "abc", "36efded2" },
+        { "message digest" , "34216550" },
+        { "abcdefghijklmnopqrstuvwxyz" , "6d34b91c" },
+        { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" , "f3b501bc" },
+        { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "ba760ada" }
+        };
+    }
 }
