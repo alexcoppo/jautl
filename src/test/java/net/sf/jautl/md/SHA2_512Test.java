@@ -28,6 +28,7 @@ package net.sf.jautl.md;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 public class SHA2_512Test extends TesterBase {
     @BeforeTest()
@@ -54,5 +55,10 @@ public class SHA2_512Test extends TesterBase {
         "de0ff244877ea60a4cb0432ce577c31beb009c5c2c49aa2e4eadb217ad8cc09b"
         }
         };
+    }
+
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
     }
 }

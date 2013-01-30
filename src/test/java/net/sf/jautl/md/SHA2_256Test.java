@@ -42,4 +42,9 @@ public class SHA2_256Test extends TesterBase {
         { null, "cdc76e5c9914fb9281a1c7e284d73e67f1809a48a497200e046d39ccc7112cd0" }
         };
     }
+
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
+    }
 }

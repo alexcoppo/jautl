@@ -46,4 +46,9 @@ public class Murmur3_32Test extends TesterBase {
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "ba760ada" }
         };
     }
+
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
+    }
 }

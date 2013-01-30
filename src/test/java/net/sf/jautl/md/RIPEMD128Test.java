@@ -48,4 +48,9 @@ public class RIPEMD128Test extends TesterBase {
         { null, "4a7f5723f954eba1216c9d8f6320431f" }
         };
     }
+
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
+    }
 }

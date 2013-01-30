@@ -47,6 +47,16 @@ public class Adler32Test extends TesterBase {
         { "Wikipedia", "9803e611" }
         };
     }
+
+    /*
+     * A hack. If the super class method is marked @Test,
+     * it is attempted on the super class and fails. This
+     * way, the spurious error is prevented.
+     */
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
+    }
 }
     /*
 	@Test

@@ -46,4 +46,9 @@ public class MD2Test extends TesterBase {
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "d5976f79d83d3a0dc9806c3c66f3efd8" }
         };
     }
+
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
+    }
 }

@@ -46,4 +46,9 @@ public class MD5Test extends TesterBase {
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "57edf4a22be3c955ac49da2e2107b67a" }
         };
     }
+
+    @Test(dataProvider="test-vectors")
+	public void test(String message, String digest) {
+        super.test(message, digest);
+    }
 }
