@@ -27,14 +27,12 @@
 package net.sf.jautl.md;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class TesterBase {
     protected DigestEngine de;
 
-    @Test(dataProvider="test-vectors")
-	public void test(String message, String digest) {
-		de.initiate();
+	protected void test(String message, String digest) {
+        de.initiate();
         
         if (message != null)
             de.add(message);
@@ -42,8 +40,8 @@ public class TesterBase {
             for (int index = 0; index < 1000000; index++)
                 de.add("a");
                     
-		de.terminate();
-		String result = de.getAsHex().toLowerCase();
-		Assert.assertEquals(result, digest);
+	    de.terminate();
+	    String result = de.getAsHex().toLowerCase();
+	    Assert.assertEquals(result, digest);
 	}
 }
