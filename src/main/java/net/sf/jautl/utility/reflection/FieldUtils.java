@@ -30,8 +30,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO fix warnings
-
 /**
  * This class implements some common methods used when performing reflection
  * tasks on fields.
@@ -59,7 +57,7 @@ public class FieldUtils {
 		for (Field f : fields)
 			result.add(f.getName());
 
-		return result.toArray(new String[0]);
+		return result.toArray(new String[result.size()]);
 	}
 
     /**
@@ -82,6 +80,7 @@ public class FieldUtils {
      * @param attributeClass the class of the marking attribute
      * @return a vector of fields
      */
+    @SuppressWarnings(value = "unchecked")
 	public static Field[] getFieldsByAttribute(Object o, Class attributeClass) {
 		List<Field> result = new ArrayList<Field>();
 
@@ -92,7 +91,7 @@ public class FieldUtils {
                 result.add(f);
             }
 
-		return result.toArray(new Field[0]);
+		return result.toArray(new Field[result.size()]);
 	}
 
     /**
@@ -101,6 +100,7 @@ public class FieldUtils {
      * @param attributeClass the class of the marking attribute
      * @return a vector of Strings
      */
+    @SuppressWarnings(value = "unchecked")
 	public static String[] getFieldNamesByAttribute(Object o, Class attributeClass) {
 		List<String> result = new ArrayList<String>();
 
@@ -111,7 +111,7 @@ public class FieldUtils {
                 result.add(f.getName());
             }
 
-        return result.toArray(new String[0]);
+        return result.toArray(new String[result.size()]);
 	}
 
     /**
