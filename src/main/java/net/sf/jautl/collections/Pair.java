@@ -87,7 +87,7 @@ public class Pair<F,S> {
 
 	/**
 	 * The implementation of equals of this class.
-	 * @param obj the object to compar to
+	 * @param obj the object to compare to
 	 * @return the result of the computation 
 	 */
 	@Override
