@@ -26,9 +26,18 @@
 */
 package net.sf.jautl.utility.reflection;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
 /**
  *
  */
 public class MethodUtils {
-    
+    public static Annotation getAnnotation(Method m, Class annotationClass) {
+        return m.getAnnotation(annotationClass);
+    }
+
+    public static boolean hasAnnotation(Method m, Class annotationClass) {
+        return getAnnotation(m, annotationClass) != null;
+    }
 }
