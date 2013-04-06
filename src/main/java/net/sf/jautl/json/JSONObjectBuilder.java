@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2000-2012 Alessandro Coppo
+    Copyright (c) 2000-2013 Alessandro Coppo
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
+ * This class provides a fluent style wrapper on JSONObject.
  */
 public class JSONObjectBuilder {
     private JSONObject obj;
