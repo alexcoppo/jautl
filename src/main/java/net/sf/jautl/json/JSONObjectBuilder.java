@@ -35,11 +35,21 @@ import org.json.JSONObject;
 public class JSONObjectBuilder {
     private JSONObject obj;
     
+    /**
+     * The constructor.
+     */
     public JSONObjectBuilder() {
         obj = new JSONObject();
     }
-            
-    public JSONObjectBuilder put(String key, String value) {
+
+    /**
+     * Set an entry of the assiciative array to a value.
+     * 
+     * @param key the key
+     * @param value the value to set
+     * @return the builder instance
+     */
+    public JSONObjectBuilder put(String key, Object value) {
         try {
             obj.put(key, value);
         } catch (JSONException ex) {
@@ -49,11 +59,21 @@ public class JSONObjectBuilder {
         return this;
     }
     
-    public JSONObject get() {
+    /**
+     * Return the underlying object.
+     * 
+     * @return the underlying object
+     */
+    public JSONObject getObject() {
         return obj;
     }
     
-    public String toString() {
+    /**
+     * Convert the underlying object to its string representation.
+     * 
+     * @return the string representation of the underlying object
+     */
+    public String asString() {
         return obj.toString();
     }
 }
