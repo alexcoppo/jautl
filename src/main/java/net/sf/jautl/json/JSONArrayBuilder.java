@@ -34,16 +34,26 @@ import org.json.JSONException;
  */
 public class JSONArrayBuilder {
     private JSONArray arr;
-    private int index;
+    private int firstFree;
 
     /**
      * The constructor.
      */
     public JSONArrayBuilder() {
         arr = new JSONArray();
-        index = 0;
+        firstFree = 0;
     }
 
+    /**
+     * The constructor.
+     *
+     * @param arr the array to use to initialize this instance
+     */
+    public JSONArrayBuilder(JSONArray arr) {
+        this();
+        append(arr);
+    }
+    
     /**
      * Append an entry to the array.
      * 
@@ -53,7 +63,7 @@ public class JSONArrayBuilder {
      */
     public JSONArrayBuilder append(Object obj) {
         try {
-            arr.put(index++, obj);
+            arr.put(firstFree++, obj);
         } catch (JSONException ex) {
            ;//TODO fix me
         }
@@ -61,6 +71,19 @@ public class JSONArrayBuilder {
         return this;
     }
 
+    /**
+     * Append all instances of a vector to this builder.
+     * 
+     * @param vec the vector of the data to be appended
+     * @return the builder instance
+     */
+    public JSONArrayBuilder append(Object[] vec) {
+        for (int index = 0; index < vec.length; index++)
+            append(vec[index]);
+        
+        return this;
+    }
+    
     /**
      * Return the underlying array.
      * 

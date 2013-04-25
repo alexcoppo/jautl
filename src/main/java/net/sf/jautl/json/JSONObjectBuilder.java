@@ -26,6 +26,7 @@
 */
 package net.sf.jautl.json;
 
+import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,6 +44,16 @@ public class JSONObjectBuilder {
     }
 
     /**
+     * The constructor.
+     * 
+     * @param obj the object whose properties copy
+     */
+    public JSONObjectBuilder(JSONObject obj) {
+        this();
+        merge(obj);
+    }
+    
+    /**
      * Set an entry of the assiciative array to a value.
      * 
      * @param key the key
@@ -52,6 +63,27 @@ public class JSONObjectBuilder {
     public JSONObjectBuilder put(String key, Object value) {
         try {
             obj.put(key, value);
+        } catch (JSONException ex) {
+           ;//TODO fix me
+        }
+        
+        return this;
+    }
+
+    /**
+     * Merge all entries of an object into this builder. Items already existing
+     * are overwritten.
+     * 
+     * @param obj the object whose items to copy
+     * @return the builder instance
+     */
+    public JSONObjectBuilder merge(JSONObject obj) {
+        try {
+            Iterator itr = obj.keys();
+            for (itr.hasNext();;) {
+                String key = (String)itr.next();
+                put(key, obj.get(key));
+            }
         } catch (JSONException ex) {
            ;//TODO fix me
         }
