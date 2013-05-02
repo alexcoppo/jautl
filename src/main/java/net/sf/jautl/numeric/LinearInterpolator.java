@@ -48,7 +48,7 @@ public class LinearInterpolator {
 	 * @param b the final value
 	 * @return 
 	 */
-    public static double f(double a, double alpha, double b) {
+    public static double interpolate(double a, double alpha, double b) {
         return a * (1 - alpha) + b * alpha;
     }
 }
