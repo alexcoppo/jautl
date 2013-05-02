@@ -46,8 +46,9 @@ public interface FileSystemScannerEventSink {
     /**
      * Raised every time a file is being visited.
      * @param f the file being visited
+     * @return whether to continue the scan
      */
-    public void onVisitFile(File f);
+    public boolean onVisitFile(File f);
 
     /**
      * Raised every time a directory scan has just ended.

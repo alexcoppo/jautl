@@ -36,6 +36,14 @@ import java.util.Comparator;
  * This class implements a filesystem recursive scanner. 
  */
 public class FileSystemScanner {
+    /**
+     * The status of the processing.
+     */
+    public enum ProcessingStatus {
+        completed,
+        aborted
+    }
+    
 	/**
 	 * Set the sink for the file system scanning events.
 	 * @param snk the sink to call
@@ -63,73 +71,101 @@ public class FileSystemScanner {
     /**
      * Shallow traverse of a single directory.
      * @param root the directory to process
+     * @return the processing status of the scan
      */
-    public void traverseFiles(File root) {
+    public ProcessingStatus traverseFiles(File root) {
         snk.onSetUp();
-        traverseFilesAux(root);
+        boolean continueScan = traverseFilesAux(root);
         snk.onCleanUp();
+        
+        return continueScan ? ProcessingStatus.completed : ProcessingStatus.aborted;
     }
 
     /**
      * Recursive traversal of a directories tree. The directories are iterated before the files.
      * @param root the root directory of the traversal
      */
-    public void traverseDirsFiles(File root) {
+    public ProcessingStatus traverseDirsFiles(File root) {
         snk.onSetUp();
-        traverseDirsFilesAux(root);
+        boolean continueScan = traverseDirsFilesAux(root);
         snk.onCleanUp();
+        
+        return continueScan ? ProcessingStatus.completed : ProcessingStatus.aborted;
     }
 
     /**
      * Recursive traversal of a directories tree. The directories are iterated after the files.
      * @param root the root directory of the traversal
+     * @return the processing status of the scan
      */
-    public void traverseFilesDirs(File root) {
+    public ProcessingStatus traverseFilesDirs(File root) {
         snk.onSetUp();
-        traverseFilesDirsAux(root);
+        boolean continueScan = traverseFilesDirsAux(root);
         snk.onCleanUp();
+        
+        return continueScan ? ProcessingStatus.completed : ProcessingStatus.aborted;
     }
 
-    private void traverseFilesAux(File root) {
-        snk.onEnterDirectory(root);
-
-        ArrayList<File> files = enumFiles(root);
-        for (File f : files)
-            snk.onVisitFile(f);
-
-        snk.onExitDirectory(root);
+    private boolean traverseFilesAux(ArrayList<File> files) {
+        boolean continueScan = true;
+        
+        for (int index = 0; index < files.size(); index++) {
+            continueScan = snk.onVisitFile(files.get(index));
+            if (!continueScan)
+                break;
+        }
+        
+        return continueScan;
     }
 
-    private void traverseDirsFilesAux(File root) {
+    private boolean traverseFilesAux(File root) {
         snk.onEnterDirectory(root);
-
-        ArrayList<File> files;
-        
-        files = enumDirectories(root);
-        for (File f : files)
-            traverseDirsFilesAux(f);
-
-        files = enumFiles(root);
-        for (File f : files)
-            snk.onVisitFile(f);
-        
+        boolean continueScan = traverseFilesAux(enumFiles(root));
         snk.onExitDirectory(root);
+        
+        return continueScan;
     }
 
-    private void traverseFilesDirsAux(File root) {
+    private boolean traverseDirsFilesAux(File root) {
         snk.onEnterDirectory(root);
 
-        ArrayList<File> files;
+        boolean continueScan = true;
         
-        files = enumFiles(root);
-        for (File f : files)
-            snk.onVisitFile(f);
-
-        files = enumDirectories(root);
-        for (File f : files)
-            traverseDirsFilesAux(f);
-
+        ArrayList<File> files = enumDirectories(root);
+        for (File f : files) {
+            continueScan = traverseDirsFilesAux(f);
+            if (!continueScan)
+                break;
+        }
+        
+        if (continueScan)
+            continueScan = traverseFilesAux(enumFiles(root));
+        
         snk.onExitDirectory(root);
+        
+        return continueScan;
+    }
+
+    private boolean traverseFilesDirsAux(File root) {
+        snk.onEnterDirectory(root);
+
+        boolean continueScan = true;
+        
+        continueScan = traverseFilesAux(enumFiles(root));
+
+        if (continueScan) {
+            ArrayList<File> files = enumDirectories(root);
+            
+            for (File f : files) {
+                continueScan = traverseDirsFilesAux(f);
+                if (!continueScan)
+                    break;
+            }
+        }
+        
+        snk.onExitDirectory(root);
+        
+        return continueScan;
     }
 
     private ArrayList<File> enumDirectories(File root) {
@@ -160,6 +196,7 @@ public class FileSystemScanner {
 
     private void sort(ArrayList<File> files) {
         Collections.sort(files, new Comparator<File>() {
+            @Override
             public int compare(File f1, File f2) {
                 return f1.compareTo(f2);
             }

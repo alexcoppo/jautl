@@ -40,7 +40,8 @@ public class FileSystemScannerEventSinkImpl implements FileSystemScannerEventSin
 	public void onEnterDirectory(File f) {
 	}
 
-	public void onVisitFile(File f) {
+	public boolean onVisitFile(File f) {
+        return true;
 	}
 
 	public void onExitDirectory(File f) {
