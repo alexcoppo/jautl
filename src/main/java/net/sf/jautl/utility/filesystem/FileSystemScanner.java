@@ -149,9 +149,7 @@ public class FileSystemScanner {
     private boolean traverseFilesDirsAux(File root) {
         snk.onEnterDirectory(root);
 
-        boolean continueScan = true;
-        
-        continueScan = traverseFilesAux(enumFiles(root));
+        boolean continueScan = traverseFilesAux(enumFiles(root));
 
         if (continueScan) {
             ArrayList<File> files = enumDirectories(root);
