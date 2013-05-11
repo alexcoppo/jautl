@@ -40,7 +40,7 @@ public class JSONObjectBuilder {
      * The constructor.
      */
     public JSONObjectBuilder() {
-        obj = new JSONObject();
+        reset();
     }
 
     /**
@@ -51,6 +51,16 @@ public class JSONObjectBuilder {
     public JSONObjectBuilder(JSONObject obj) {
         this();
         merge(obj);
+    }
+
+    /**
+     * Reset the builder to the initial state.
+     * @return the builder instance
+     */
+    public JSONObjectBuilder reset() {
+        obj = new JSONObject();
+
+        return this;
     }
     
     /**

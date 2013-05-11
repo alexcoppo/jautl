@@ -40,8 +40,7 @@ public class JSONArrayBuilder {
      * The constructor.
      */
     public JSONArrayBuilder() {
-        arr = new JSONArray();
-        firstFree = 0;
+        reset();
     }
 
     /**
@@ -52,6 +51,17 @@ public class JSONArrayBuilder {
     public JSONArrayBuilder(JSONArray arr) {
         this();
         append(arr);
+    }
+
+    /**
+     * Reset the builder to the initial state.
+     * @return the builder instance
+     */
+    public JSONArrayBuilder reset() {
+        arr = new JSONArray();
+        firstFree = 0;
+
+        return this;
     }
     
     /**
