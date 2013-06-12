@@ -32,19 +32,20 @@ import java.lang.annotation.Annotation;
  *
  */
 public class ClassUtils {
-    public static boolean hasAnnotation(Object obj, Class annClass) {
+    public static boolean hasAnnotation(Object obj, Class<?> annClass) {
         return hasAnnotation(obj.getClass(), annClass);
     }
 
-    public static boolean hasAnnotation(Class clazz, Class annClass) {
+    public static boolean hasAnnotation(Class<?> clazz, Class<?> annClass) {
         return getAnnotation(clazz, annClass) != null;
     }
 
-    public static Annotation getAnnotation(Object obj, Class annClass) {
+    public static Annotation getAnnotation(Object obj, Class<?> annClass) {
         return getAnnotation(obj.getClass(), annClass);
     }
 
-    public static Annotation getAnnotation(Class clazz, Class annClass) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public static Annotation getAnnotation(Class clazz, Class<?> annClass) {
         return clazz.getAnnotation(annClass);
     }
 }

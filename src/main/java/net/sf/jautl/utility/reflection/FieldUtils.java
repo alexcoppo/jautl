@@ -80,7 +80,7 @@ public class FieldUtils {
      * @param attributeClass the class of the marking attribute
      * @return a vector of fields
      */
-    @SuppressWarnings(value = "unchecked")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Field[] getFieldsByAttribute(Object o, Class attributeClass) {
 		List<Field> result = new ArrayList<Field>();
 
@@ -100,7 +100,7 @@ public class FieldUtils {
      * @param attributeClass the class of the marking attribute
      * @return a vector of Strings
      */
-    @SuppressWarnings(value = "unchecked")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
 	public static String[] getFieldNamesByAttribute(Object o, Class attributeClass) {
 		List<String> result = new ArrayList<String>();
 

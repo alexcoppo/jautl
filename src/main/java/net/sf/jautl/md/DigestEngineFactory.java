@@ -36,7 +36,8 @@ public class DigestEngineFactory {
     private static final String packagePrefix = DigestEngineFactory.class.getPackage().getName() + ".";
     
     public static DigestEngine create(String name) {
-        Class clazz;
+        Class<?> clazz;
+        
         try {
             clazz = Class.forName(packagePrefix + name);
         } catch (ClassNotFoundException ex) {

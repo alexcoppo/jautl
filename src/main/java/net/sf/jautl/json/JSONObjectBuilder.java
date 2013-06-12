@@ -89,7 +89,7 @@ public class JSONObjectBuilder {
      */
     public JSONObjectBuilder merge(JSONObject obj) {
         try {
-            Iterator itr = obj.keys();
+            Iterator<?> itr = obj.keys();
             for (itr.hasNext();;) {
                 String key = (String)itr.next();
                 put(key, obj.get(key));

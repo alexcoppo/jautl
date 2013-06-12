@@ -33,10 +33,12 @@ import java.lang.reflect.Method;
  *
  */
 public class MethodUtils {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public static Annotation getAnnotation(Method m, Class annotationClass) {
         return m.getAnnotation(annotationClass);
     }
 
+    @SuppressWarnings({ "rawtypes" })
     public static boolean hasAnnotation(Method m, Class annotationClass) {
         return getAnnotation(m, annotationClass) != null;
     }
