@@ -26,17 +26,22 @@
 */
 package net.sf.jautl.md;
 
-import org.testng.annotations.*;
+import java.util.Arrays;
+import java.util.Collection;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
 public class MD2Test extends TesterBase {
-    @BeforeTest()
-	public void setUp() {
-		de = new MD2();
+    public MD2Test(String message, String expectedDigest) {
+    	super(message, expectedDigest, new MD2());
 	}
-
-    @DataProvider(name="test-vectors")
-    public Object[][] testVectors() {
-        return new Object[][] {
+    
+    @Parameterized.Parameters
+    public static Collection<Object[]> testVectors() {
+        return Arrays.asList(new Object[][] {
         { "", "8350e5a3e24c153df2275c9f80692773" },
         { "a" , "32ec01ec4a6dac72c0ab96fb34c0b5d1" },
         { "abc" , "da853b0d3f88d99b30283a69e6ded6bb" },
@@ -44,11 +49,11 @@ public class MD2Test extends TesterBase {
         { "abcdefghijklmnopqrstuvwxyz" , "4e8ddff3650292ab5a4108c3aa47940b" },
         { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" , "da33def2a42df13975352846c30338cd" },
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "d5976f79d83d3a0dc9806c3c66f3efd8" }
-        };
+        });
     }
-
-    @Test(dataProvider="test-vectors")
-	public void test(String message, String digest) {
-        super.test(message, digest);
+    
+    @Test
+    public void testDigest() {
+    	super.testDigest();
     }
 }

@@ -26,17 +26,22 @@
 */
 package net.sf.jautl.md;
 
-import org.testng.annotations.*;
+import java.util.Arrays;
+import java.util.Collection;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
 public class RIPEMD128Test extends TesterBase {
-    @BeforeTest()
-	public void setUp() {
-		de = new RIPEMD128();
+    public RIPEMD128Test(String message, String expectedDigest) {
+    	super(message, expectedDigest, new RIPEMD128());
 	}
 
-    @DataProvider(name="test-vectors")
-    public Object[][] testVectors() {
-        return new Object[][] {
+    @Parameterized.Parameters
+    public static Collection<Object[]> testVectors() {
+        return Arrays.asList(new Object[][] {
         { "", "cdf26213a150dc3ecb610f18f6b38b46" },
         { "a", "86be7afa339d0fc7cfc785e72f578d33" },
         { "abc", "c14a12199c66e4ba84636b0f69144c77" },
@@ -46,11 +51,11 @@ public class RIPEMD128Test extends TesterBase {
         { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", "d1e959eb179c911faea4624c60c5c702" },
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890", "3f45ef194732c2dbb2c4a2c769795fa3" },
         { null, "4a7f5723f954eba1216c9d8f6320431f" }
-        };
+        });
     }
-
-    @Test(dataProvider="test-vectors")
-	public void test(String message, String digest) {
-        super.test(message, digest);
+    
+    @Test
+    public void testDigest() {
+    	super.testDigest();
     }
 }

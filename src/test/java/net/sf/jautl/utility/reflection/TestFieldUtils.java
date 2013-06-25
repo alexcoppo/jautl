@@ -30,8 +30,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import org.testng.Assert;
-import org.testng.annotations.*;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class TestFieldUtils {
     @Retention(RetentionPolicy.RUNTIME)

@@ -27,8 +27,9 @@
 package net.sf.jautl.utility.mutables;
 
 import java.util.Date;
-import org.testng.Assert;
-import org.testng.annotations.*;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class MutableTest {
 	@Test

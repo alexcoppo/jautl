@@ -26,8 +26,9 @@
 */
 package net.sf.jautl.rng.sources;
 
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.junit.Assert;
+import org.junit.Test;
+
 import net.sf.jautl.rng.interfaces.GeneratorsByte;
 
 public class RandomSourceRC4Test {

@@ -26,17 +26,22 @@
 */
 package net.sf.jautl.md;
 
-import org.testng.annotations.*;
+import java.util.Arrays;
+import java.util.Collection;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
 public class Adler32Test extends TesterBase {
-    @BeforeTest()
-	public void setUp() {
-		de = new Adler32();
+    public Adler32Test(String message, String expectedDigest) {
+    	super(message, expectedDigest, new Adler32());
 	}
-
-    @DataProvider(name="test-vectors")
-    public Object[][] testVectors() {
-        return new Object[][] {
+    
+    @Parameterized.Parameters
+    public static Collection<Object[]> testVectors() {
+        return Arrays.asList(new Object[][] {
         { "", "01000000" },
         { "a", "62006200" },
         { "abc", "27014d02" },
@@ -45,81 +50,11 @@ public class Adler32Test extends TesterBase {
         { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", "0c15db8a" },
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890", "6910b697" },
         { "Wikipedia", "9803e611" }
-        };
+        });
     }
-
-    /*
-     * A hack. If the super class method is marked @Test,
-     * it is attempted on the super class and fails. This
-     * way, the spurious error is prevented.
-     */
-    @Test(dataProvider="test-vectors")
-	public void test(String message, String digest) {
-        super.test(message, digest);
+    
+    @Test
+    public void testDigest() {
+    	super.testDigest();
     }
 }
-    /*
-	@Test
-	public void test1() {
-		md.add("");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("01000000"));
-	}
-
-	@Test
-	public void test2() {
-		md.add("a");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("62006200"));
-	}
-
-	@Test
-	public void test3() {
-		md.add("abc");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("27014d02"));
-	}
-
-	@Test
-	public void test4() {
-		md.add("message digest");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("86057529"));
-	}
-
-	@Test
-	public void test5() {
-		md.add("abcdefghijklmnopqrstuvwxyz");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("200b8690"));
-	}
-
-	@Test
-	public void test6() {
-		md.add("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("0c15db8a"));
-	}
-
-	@Test
-	public void test7() {
-		md.add("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("6910b697"));
-	}
-
-	@Test
-	public void testWikipedia() {
-		md.add("Wikipedia");
-		md.terminate();
-		String result = md.getAsHex();
-		assertTrue(result.equalsIgnoreCase("9803e611"));
-	}
-    */

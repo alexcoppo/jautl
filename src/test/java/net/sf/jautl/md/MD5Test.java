@@ -26,17 +26,22 @@
 */
 package net.sf.jautl.md;
 
-import org.testng.annotations.*;
+import java.util.Arrays;
+import java.util.Collection;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
 public class MD5Test extends TesterBase {
-    @BeforeTest()
-	public void setUp() {
-		de = new MD5();
+    public MD5Test(String message, String expectedDigest) {
+    	super(message, expectedDigest, new MD5());
 	}
-
-    @DataProvider(name="test-vectors")
-    public Object[][] testVectors() {
-        return new Object[][] {
+    
+    @Parameterized.Parameters
+    public static Collection<Object[]> testVectors() {
+        return Arrays.asList(new Object[][] {
         { "" , "d41d8cd98f00b204e9800998ecf8427e" },
         { "a" , "0cc175b9c0f1b6a831c399e269772661" },
         { "abc" , "900150983cd24fb0d6963f7d28e17f72" },
@@ -44,11 +49,11 @@ public class MD5Test extends TesterBase {
         { "abcdefghijklmnopqrstuvwxyz" , "c3fcd3d76192e4007dfb496cca67e13b" },
         { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" , "d174ab98d277d9f5a5611c2c9f419d9f" },
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "57edf4a22be3c955ac49da2e2107b67a" }
-        };
+        });
     }
-
-    @Test(dataProvider="test-vectors")
-	public void test(String message, String digest) {
-        super.test(message, digest);
+    
+    @Test
+    public void testDigest() {
+    	super.testDigest();
     }
 }

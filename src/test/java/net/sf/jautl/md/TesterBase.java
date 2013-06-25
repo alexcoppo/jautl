@@ -26,12 +26,20 @@
 */
 package net.sf.jautl.md;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 public class TesterBase {
-    protected DigestEngine de;
+	private String message;
+	private String expectedDigest;
+	private DigestEngine de;
 
-	protected void test(String message, String digest) {
+    protected TesterBase(String message, String expectedDigest, DigestEngine de) {
+		this.message = message;
+		this.expectedDigest = expectedDigest;
+		this.de = de;
+	}
+    
+	protected void testDigest() {
         de.initiate();
         
         if (message != null)
@@ -42,6 +50,6 @@ public class TesterBase {
                     
 	    de.terminate();
 	    String result = de.getAsHex().toLowerCase();
-	    Assert.assertEquals(result, digest);
+	    Assert.assertEquals(expectedDigest, result);
 	}
 }

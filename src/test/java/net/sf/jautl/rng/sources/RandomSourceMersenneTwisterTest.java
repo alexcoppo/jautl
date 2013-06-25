@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.rng.sources;
 
-import org.testng.annotations.*;
-import org.testng.Assert;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class RandomSourceMersenneTwisterTest {
 	@Test

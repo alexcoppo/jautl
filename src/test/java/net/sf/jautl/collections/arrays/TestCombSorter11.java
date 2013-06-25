@@ -26,18 +26,20 @@
 */
 package net.sf.jautl.collections.arrays;
 
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 public class TestCombSorter11 {
 	private int[] numbers;
 
-	@BeforeMethod
+	@Before
 	public void allocate() {
 		numbers = new int[20];
 	}
 
-	@AfterMethod
+	@After
 	public void free() {
 		numbers = null;
 	}

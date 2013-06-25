@@ -26,17 +26,22 @@
 */
 package net.sf.jautl.md;
 
-import org.testng.annotations.*;
+import java.util.Arrays;
+import java.util.Collection;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
 public class Murmur3_32Test extends TesterBase {
-    @BeforeTest()
-	public void setUp() {
-		de = new Murmur3_32();
+    public Murmur3_32Test(String message, String expectedDigest) {
+    	super(message, expectedDigest, new Murmur3_32());
 	}
-
-    @DataProvider(name="test-vectors")
-    public Object[][] testVectors() {
-        return new Object[][] {
+    
+    @Parameterized.Parameters
+    public static Collection<Object[]> testVectors() {
+        return Arrays.asList(new Object[][] {
         { "", "b7284e51" },
         { "a" , "395dbaa1" },
         { "abc", "36efded2" },
@@ -44,11 +49,11 @@ public class Murmur3_32Test extends TesterBase {
         { "abcdefghijklmnopqrstuvwxyz" , "6d34b91c" },
         { "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" , "f3b501bc" },
         { "12345678901234567890123456789012345678901234567890123456789012345678901234567890" , "ba760ada" }
-        };
+        });
     }
-
-    @Test(dataProvider="test-vectors")
-	public void test(String message, String digest) {
-        super.test(message, digest);
+    
+    @Test
+    public void testDigest() {
+    	super.testDigest();
     }
 }

@@ -26,8 +26,8 @@
 */
 package net.sf.jautl.utility;
 
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class BitRotationsTest {
 	@Test
