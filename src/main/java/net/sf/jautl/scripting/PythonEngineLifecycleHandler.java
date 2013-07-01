@@ -36,9 +36,14 @@ import javax.script.ScriptException;
  */
 public class PythonEngineLifecycleHandler implements ScriptEngineLifecycleHandler {
     private List<String> includeDirs = new ArrayList<String>();
+    private List<String> autoImports = new ArrayList<String>();
 
     public void addIncludeDir(String dir) {
         includeDirs.add(dir);
+    }
+
+    public void addAutoImport(String package_) {
+        autoImports.add(package_);
     }
     
     @Override
@@ -48,6 +53,11 @@ public class PythonEngineLifecycleHandler implements ScriptEngineLifecycleHandle
 
             for (String dir : includeDirs) {
                 String stmt =  "sys.path.append(\"" + dir.replace("\\", "\\\\") + "\")";
+                se.eval(stmt);
+            }
+            
+            for (String package_ : autoImports) {
+                String stmt =  "from " + package_ + " import *;";
                 se.eval(stmt);
             }
             
