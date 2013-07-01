@@ -32,8 +32,6 @@ import javax.script.ScriptEngine;
  *
  */
 public class JavascriptEngineLifecycleHandler implements ScriptEngineLifecycleHandler {
-	private JavascriptIncludeHandler ih;
-
     @Override
     public boolean setUp(ScriptEngine se) {
 		JavascriptIncludeHandler ih = new JavascriptIncludeHandler();
