@@ -27,9 +27,9 @@ Using the library is very simple: just add the generated jar to your dependencie
 
 Samples
 ----------------------------------------------------------------------------
-You can find some samples for this library in the project jautl_samples here
-on GitHub (to find it see the list of all my projects on GitHub at
-https://github.com/alexcoppo). 
+You can find some samples for this library in the projects jautl-samples and
+jautl-web-samples here on GitHub (to find it see the list of all my projects
+on GitHub at https://github.com/alexcoppo). 
 
 Documentation and its generation
 ----------------------------------------------------------------------------
