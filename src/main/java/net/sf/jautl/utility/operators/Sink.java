@@ -27,40 +27,29 @@
 package net.sf.jautl.utility.operators;
 
 /**
- * This class describes the protocol of the generic operator to combine 2 objects
- * into a third one.
- *
- * @param <DstType> the type of the destination
- * @param <SrcAType> the type of the first source
- * @param <SrcBType> the type of the second source
+ * This class describes the generic sink of an object.
+ * @param <Type> the type of the destination
  */
-public abstract class Combiner_2_1<DstType, SrcAType, SrcBType> {
+public abstract class Sink<Type> {
     /**
-     * Perform the combination process.
+     * Perform the conversion process.
      */
-	public void combine(DstType dst, SrcAType srcA, SrcBType srcB) {
-		setupOperator(dst, srcA, srcB);
-		setupDestination(dst, srcA, srcB);
-		combineImpl(dst, srcA, srcB);
+	public void process(Type src) {
+		setupOperator(src);
+		processImpl(src);
 		teardownOperator();
 	}
 	
     /**
-     * Placeholder for the initialization of the destination.
+     * Placeholder for the initialization of the operator itself.
      */
-	protected void setupDestination(DstType dst, SrcAType srcA, SrcBType srcB) {
-	}
-	
-    /**
-     * Placeholder for the setup of the operator itself.
-     */
-    protected void setupOperator(DstType dst, SrcAType srcA, SrcBType srcB) {
+    protected void setupOperator(Type src) {
     }
 
     /**
-     * The actual implementation of the combine.
+     * The actual conversion implementation.
      */
-	protected abstract void combineImpl(DstType dst, SrcAType srcA, SrcBType srcB);
+	protected abstract void processImpl(Type src);
 
     /**
      * Placeholder for the cleanup of the operator.
