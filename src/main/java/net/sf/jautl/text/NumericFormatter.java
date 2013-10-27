@@ -35,8 +35,36 @@ public abstract class NumericFormatter {
     protected double mantissa;
 	/** The exponent of the number. */
     protected int exponent;
-
+    /** The mode of scale decoding. */
+    protected UnitMode unitMode = UnitMode.Symbol;
+    
+    protected int mantissaDigits = 0;
+    
     /**
+     * The kind of scale indication.
+     */
+    public enum UnitMode {
+    	Symbol,
+    	Prefix
+    }
+
+    public final UnitMode getUnitMode() {
+		return unitMode;
+	}
+
+	public final void setUnitMode(UnitMode unitMode) {
+		this.unitMode = unitMode;
+	}
+
+	public final int getMantissaDigits() {
+		return mantissaDigits;
+	}
+
+	public final void setMantissaDigits(int mantissaDigits) {
+		this.mantissaDigits = mantissaDigits;
+	}
+
+	/**
      * Return the mantissa of the formatted number.
      * @return the mantissa
      */
@@ -61,4 +89,6 @@ public abstract class NumericFormatter {
     public int getExponent() {
     	return exponent;
     }
+
+    public abstract String buildString();
 }

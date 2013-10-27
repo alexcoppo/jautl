@@ -50,22 +50,24 @@ public class ProgrammerFormatter extends NumericFormatter {
     }
 
     /**
-     * Build a string representation of the formatted number. The exponent is
-     * shown as an SI prefix like M or G.
-     * @param mantissaDigits the number of digits in the mantissa
-     * @param unit the unit of measure
+     * Build a string representation of the formatted number.
      * @return the resulting text
      */
-    public String buildString(int mantissaDigits, String unit) {
+    @Override
+    public String buildString() {
     	StringBuilder SB = new StringBuilder();
     	
     	SB.append(getMantissa(mantissaDigits));
     	
-    	if (!unit.equals("")) {
-    		SB.append(" ");
+		SB.append(" ");
+		switch (unitMode) {
+		case Symbol:
+    		SB.append(SIPrefixes.lookupSymbol(exponent));
+			break;
+		case Prefix:
     		SB.append(SIPrefixes.lookupPrefix(exponent));
-    		SB.append(unit);
-        }
+			break;
+		}
 
     	return SB.toString();
     }
