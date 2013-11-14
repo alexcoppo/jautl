@@ -26,54 +26,46 @@
 */
 package net.sf.jautl.md;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collection;
 
-/**
- *
- */
-public class DigestEngineFactory {
-    private static final String packagePrefix = DigestEngineFactory.class.getPackage().getName() + ".";
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
+public class SipHash_2_4Test extends TesterBase {
+	private static byte[] testKey = {
+	        (byte)0x00, (byte)0x01, (byte)0x02, (byte)0x03,
+	        (byte)0x04, (byte)0x05, (byte)0x06, (byte)0x07,
+	        (byte)0x08, (byte)0x09, (byte)0x0a, (byte)0x0b,
+	        (byte)0x0c, (byte)0x0d, (byte)0x0e,	(byte)0x0f
+	    };
+
+    public SipHash_2_4Test(String message, String expectedDigest) {
+    	super(message, expectedDigest, new SipHash_2_4(testKey));
+	}
     
-    public static DigestEngine create(String name) {
-        Class<?> clazz;
-        
-        try {
-            clazz = Class.forName(packagePrefix + name);
-        } catch (ClassNotFoundException ex) {
-            return null;
-        }
-
-        try {
-            return (DigestEngine)clazz.newInstance();
-        } catch (InstantiationException ex) {
-            return null;
-        } catch (IllegalAccessException ex) {
-            return null;
-        }
+    @Parameterized.Parameters
+    public static Collection<Object[]> testVectors() {
+        return Arrays.asList(new Object[][] {
+	        {
+	        "",
+            "726fdb47dd0e0e31"
+	        },
+	        {
+	        "a",
+	        "2ba3e8e9a71148ca"
+	        },
+	        {
+	        "abc",
+	        "5dbcfa53aa2007a5"
+	        }
+        });
     }
     
-    public static List<String> enumerate() {
-        ArrayList<String> names = new ArrayList<String>();
-        
-        //Enumerating all the classes of package is not an easy task in Java.
-        //Adding the required code or adding a dependency to an appropriate
-        //library is unjustifiable overkill for what we need here.
-        names.add("Adler32");
-        names.add("Goulburn");
-        names.add("HMAC2014");
-        names.add("MD2");
-        names.add("MD5");
-        names.add("Murmur2A");
-        names.add("Murmur3_32");
-        names.add("RIPEMD128");
-        names.add("RIPEMD160");
-        names.add("SHA1");
-        names.add("SHA2_256");
-        names.add("SHA2_384");
-        names.add("SHA2_512");
-        names.add("SipHash_2_4");
-
-        return names;
+    @Test
+    public void testDigest() {
+    	super.testDigest();
     }
 }
