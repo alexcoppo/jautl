@@ -44,15 +44,36 @@ public class SipHash_2_4 extends DigestEngine {
 	private int accumulatedBytes; // counter of bytes being accumulated
 	private long m; // long to accumulate bytes in until we have 8
 
+	public SipHash_2_4() {
+		super(8);
+
+		//from hexadecimal pi representation
+		this.key = new byte[] {
+			(byte)0x32, (byte)0x43, (byte)0xF6, (byte)0xA8,
+			(byte)0x88, (byte)0x5A, (byte)0x30, (byte)0x8D,
+			(byte)0x31, (byte)0x31, (byte)0x98, (byte)0xA2,
+			(byte)0xE0, (byte)0x37, (byte)0x07, (byte)0x34
+		};
+	}
+
 	public SipHash_2_4(byte[] key) {
 		super(8);
 
-		if (key.length != 16)
-			throw new IllegalArgumentException("Key must be exactly 16 bytes.");
-		else
-			this.key = key;
+		this.key = normalize(key);
 	}
 
+	private byte[] normalize(byte[] seed) {
+		if (seed.length == 16)
+			return seed;
+		
+		byte[] result = new byte[16];
+		
+		for (int index = 0; index < 16; index++)
+			result[index] = seed[index % seed.length];	//correct both of longer and shorter than 16
+		
+		return result;
+	}
+	
 	@Override
 	public void initiate() {
 		v0 = 0x736f6d6570736575L;
