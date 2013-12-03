@@ -61,7 +61,7 @@ public class DigestEngineFactory {
         //library is unjustifiable overkill for what we need here.
         names.add("Adler32");
         names.add("Goulburn");
-        names.add("HMAC2014");
+        names.add("HMAC2104");
         names.add("MD2");
         names.add("MD5");
         names.add("Murmur2A");
