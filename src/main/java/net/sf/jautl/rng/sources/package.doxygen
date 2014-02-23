@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2000-2013 Alessandro Coppo
+    Copyright (c) 2000-2014 Alessandro Coppo
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
