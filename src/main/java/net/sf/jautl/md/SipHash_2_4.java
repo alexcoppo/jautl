@@ -129,7 +129,7 @@ public class SipHash_2_4 extends DigestEngine {
 	public void terminate() {
 		byte msgLenMod256 = messageByteCounter;
 
-		// padd out the last long with zeros
+		// pad out the last long with zeros
 		// leave one space for the message length % 256
 		while (accumulatedBytes < 7)
 			add((byte) 0);
