@@ -74,7 +74,7 @@ public class JSONObjectBuilder {
         try {
             obj.put(key, value);
         } catch (JSONException ex) {
-           ;//TODO fix me
+           ;
         }
         
         return this;
@@ -95,7 +95,7 @@ public class JSONObjectBuilder {
                 put(key, obj.get(key));
             }
         } catch (JSONException ex) {
-           ;//TODO fix me
+           ;
         }
         
         return this;
