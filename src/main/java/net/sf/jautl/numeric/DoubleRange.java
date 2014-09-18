@@ -92,9 +92,9 @@ public class DoubleRange {
     }
 
     /**
-     * Scale an input value accordiong to the current range.
+     * Scale an input value according to the current range.
      * @param x the input value
-     * @return 0 if x<=minimum, 1 if x>=maximum, othwerwise a linear interpolation.
+     * @return 0 if x<=minimum, 1 if x>=maximum, otherwise a linear interpolation.
      */
     public final double scale(double x) {
         if (x <= minimum)
