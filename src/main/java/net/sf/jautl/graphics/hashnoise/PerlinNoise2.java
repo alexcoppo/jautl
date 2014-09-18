@@ -26,7 +26,7 @@
 */
 package net.sf.jautl.graphics.hashnoise;
 
-import net.sf.jautl.md.Murmur3_32;
+import net.sf.jautl.md.SipHash_2_4;
 import net.sf.jautl.md.UintHashUtilities;
 import net.sf.jautl.numeric.Constants;
 import net.sf.jautl.numeric.easefunctions.QuinticEaseFunction;
@@ -61,7 +61,7 @@ public class PerlinNoise2 extends HashNoise2 {
      * The constructor.
      */
     public PerlinNoise2() {
-    	super(new Murmur3_32());
+    	super(new SipHash_2_4());
     }
 
     @Override

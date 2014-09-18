@@ -26,7 +26,7 @@
 */
 package net.sf.jautl.graphics.hashnoise;
 
-import net.sf.jautl.md.Murmur3_32;
+import net.sf.jautl.md.SipHash_2_4;
 
 /**
  * 
@@ -39,7 +39,7 @@ public class CellNoise2 extends HashNoise2 {
      * The constructor.
      */
 	public CellNoise2() {
-		super(new Murmur3_32());
+		super(new SipHash_2_4());
 	}
 	
     /**
