@@ -75,7 +75,7 @@ public class JSONArrayBuilder {
         try {
             arr.put(firstFree++, obj);
         } catch (JSONException ex) {
-           ;//TODO fix me
+           ;
         }
         
         return this;
