@@ -28,10 +28,10 @@ package net.sf.jautl.numeric.statistics;
 
 import java.lang.reflect.Array;
 
-import net.sf.jautl.numeric.DoubleRange1D;
+import net.sf.jautl.numeric.DoubleRange;
 
 public class Histogram1D {
-    DoubleRange1D range;
+    DoubleRange range;
     private int[] histogram;
     private int binsCount;
     private int underflows;
@@ -39,8 +39,10 @@ public class Histogram1D {
     private int total;
     private int maxHits;
 
+    private int[] cumulative;
+    
     public Histogram1D(double min, double max, int binsCount) {
-    	this.range = new DoubleRange1D(min, max);
+    	this.range = new DoubleRange(min, max);
         this.histogram = new int[binsCount];
         this.binsCount = binsCount;
         
@@ -82,7 +84,7 @@ public class Histogram1D {
 
     public void add(double value) {
         if (range.isInside(value)) {
-        	int slot = range.bucketize(value, binsCount);
+        	int slot = bucketize(value);
         	
             histogram[slot]++;
             maxHits = Math.max(maxHits, histogram[slot]);
@@ -106,9 +108,30 @@ public class Histogram1D {
 
     public int getHitsAt(double x) {
         if (range.isInside(x)) {
-        	int slot = range.bucketize(x, binsCount);
+        	int slot = bucketize(x);
             return histogram[slot];
         } else
             return 0;
+    }
+    
+    public void computeCumulative() {
+		int runningTotal = 0;
+
+		for (int bucket = 0; bucket < binsCount; bucket++) {
+			runningTotal += histogram[bucket];
+			cumulative[bucket] = runningTotal;
+		}
+    }
+    
+    public int getCumulativeAt(int index) {
+    	return cumulative[index];
+    }
+    
+    public double getCumulativeFractionAt(int index) {
+    	return (double)cumulative[index] / total;
+    }
+    
+    private int bucketize(double value) {
+    	return (int)(.999999 * value * binsCount);
     }
 }
