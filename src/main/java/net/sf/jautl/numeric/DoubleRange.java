@@ -83,11 +83,11 @@ public class DoubleRange {
 	}
 
     /**
-     * Checks whether a number is withing the current range.
+     * Checks whether a number is within the current range.
      * @param x the input value
      * @return 
      */
-    public final boolean isWithin(double x) {
+    public final boolean isInside(double x) {
         return x >= minimum && x <= maximum;
     }
 
