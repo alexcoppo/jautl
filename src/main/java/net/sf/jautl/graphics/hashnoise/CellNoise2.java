@@ -26,40 +26,40 @@
 */
 package net.sf.jautl.graphics.hashnoise;
 
-import net.sf.jautl.md.SipHash_2_4;
+import net.sf.jautl.md.SipHash;
 
 /**
  * 
  */
 public class CellNoise2 extends HashNoise2 {
-	private int cellsX;
-	private int cellsY;
+	private double sizeX;
+	private double sizeY;
 
     /**
      * The constructor.
      */
 	public CellNoise2() {
-		super(new SipHash_2_4());
+		super(new SipHash(2, 4));
 	}
 	
     /**
      * Return the number of cells per abscissa unit.
      * @return number of cells per abscissa unit
      */
-	public final int getCellsX() {
-		return cellsX;
+	public final double getSizeX() {
+		return sizeX;
 	}
 	
-	public final void setCellsX(int cellsX) {
-		this.cellsX = cellsX;
+	public final void setSizeX(double sizeX) {
+		this.sizeX = sizeX;
 	}
 	
-	public final int getCellsY() {
-		return cellsY;
+	public final double getSizeY() {
+		return sizeY;
 	}
 	
-	public final void setCellsY(int cellsY) {
-		this.cellsY = cellsY;
+	public final void setSizeY(double sizeY) {
+		this.sizeY = sizeY;
 	}
 	
 	@Override
@@ -69,8 +69,8 @@ public class CellNoise2 extends HashNoise2 {
 
 		initiate();
 		
-		de.add(Double.toHexString((int)(x * cellsX)));
-		de.add(Double.toHexString((int)(y * cellsY)));
+		de.add(Double.toHexString((int)(x / sizeX)));
+		de.add(Double.toHexString((int)(y / sizeY)));
 
 		int i = terminate();
 
