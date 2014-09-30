@@ -43,7 +43,7 @@ public class SipHash_2_4Test extends TesterBase {
 	    };
 
     public SipHash_2_4Test(String message, String expectedDigest) {
-    	super(message, expectedDigest, new SipHash_2_4(testKey));
+    	super(message, expectedDigest, new SipHash(testKey));
 	}
     
     @Parameterized.Parameters
