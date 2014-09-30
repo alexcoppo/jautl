@@ -26,7 +26,7 @@
 */
 package net.sf.jautl.graphics.hashnoise;
 
-import net.sf.jautl.md.SipHash_2_4;
+import net.sf.jautl.md.SipHash;
 
 /**
  * A white noise hash generator.
@@ -36,7 +36,7 @@ public class WhiteNoise2 extends HashNoise2 {
      * The constructor.
      */
 	public WhiteNoise2() {
-		super(new SipHash_2_4());
+		super(new SipHash(4, 8));
 	}
 
 	@Override
