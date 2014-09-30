@@ -26,7 +26,7 @@
 */
 package net.sf.jautl.graphics.hashnoise;
 
-import net.sf.jautl.md.SipHash_2_4;
+import net.sf.jautl.md.SipHash;
 import net.sf.jautl.md.UintHashUtilities;
 import net.sf.jautl.numeric.Constants;
 import net.sf.jautl.numeric.easefunctions.QuinticEaseFunction;
@@ -35,7 +35,7 @@ import net.sf.jautl.numeric.easefunctions.QuinticEaseFunction;
  * 
  */
 public class PerlinNoise2 extends HashNoise2 {
-    private static final int TABLESIZE = 1024;
+    private static final int TABLESIZE = 4099;
     private static double[] gx;
     private static double[] gy;
     private static QuinticEaseFunction ef;
@@ -61,7 +61,7 @@ public class PerlinNoise2 extends HashNoise2 {
      * The constructor.
      */
     public PerlinNoise2() {
-    	super(new SipHash_2_4());
+    	super(new SipHash(2, 4));
     }
 
     @Override
@@ -94,7 +94,9 @@ public class PerlinNoise2 extends HashNoise2 {
         if (rho2 >= 1) return 0;
 
         int index = UintHashUtilities.mix(i, j, salt);
-        index = index & (TABLESIZE - 1);
+        index = index % TABLESIZE;
+        if (index < 0)
+        	index += TABLESIZE;
 
         double scalprod = gx[index] * dx + gy[index] * dy;
         return scalprod * ef.calc(Math.sqrt(rho2));
