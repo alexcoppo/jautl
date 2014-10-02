@@ -33,12 +33,14 @@ public class CombSorter11 {
 	/**
 	 * The sort method.
 	 * @param count the number of entries in the vector to sort
-	 * @param api the IndexedCollectionSortAPI instance to use to perform
-	 * comparisons and exchanges
+	 * @param comparator the comparator to use for performing the comparisons
+	 * @param exchanger the exchanger to use to swap elements
 	 */
-    public static void sort(int count, IndexedCollectionSortAPI api) {
+    public static <T> void sort(int count, IndexedCollectionItemItemComparator comparator, IndexedCollectionItemExchanger exchanger) {
+    	ComparisonResult cr = new ComparisonResult();
+ 
         for (int gap = count; ; ) {
-            gap = (int)(gap / 1.3);
+            gap = (int)(gap / 1.247330950103979);
             if (gap == 9 || gap == 10) gap = 11;
             if (gap < 1) gap = 1;
 
@@ -47,8 +49,9 @@ public class CombSorter11 {
             for (int i = 0; i < count - gap; i++) {
                 int j = i + gap;
 
-                if (!api.areOrdered(i, j)) {
-                	api.exchange(i, j);
+                comparator.compare(i, j, cr);
+                if (cr.isGreaterThan()) {
+                	exchanger.exchange(i, j);
                     swapped = true;
                 }
             }

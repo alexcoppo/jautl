@@ -34,6 +34,32 @@ import org.junit.Test;
 public class TestCombSorter11 {
 	private int[] numbers;
 
+	private class Comparator implements IndexedCollectionItemItemComparator {
+		@Override
+		public void compare(int i, int j, ComparisonResult result) {
+			if (numbers[i] < numbers[j])
+				result.markLessThan();
+			else if (numbers[i] > numbers[j])
+				result.markGreaterThan();
+			else
+				result.markEqual();
+		}
+	}
+	
+	private Comparator comparator = new Comparator();
+
+	private class Exchanger implements IndexedCollectionItemExchanger {
+		@Override
+		public void exchange(int i, int j) {
+			int tmp = numbers[i];
+			numbers[i] = numbers[j];
+			numbers[j] = tmp;
+		}
+		
+	}
+
+	private Exchanger exchanger = new Exchanger();
+
 	@Before
 	public void allocate() {
 		numbers = new int[20];
@@ -49,29 +75,7 @@ public class TestCombSorter11 {
 		for (int i = 0; i < numbers.length; i++)
 			numbers[i] = i;
 			
-		SA sa = new SA(numbers);
-		CombSorter11.sort(numbers.length, sa);
-		
-		checkAllPresentNoDuplicates();
-		checkOrder();
-	}
-	
-	@Test
-	public void testInOrderInline() {
-		for (int i = 0; i < numbers.length; i++)
-			numbers[i] = i;
-			
-		CombSorter11.sort(numbers.length, new CombSorter11APIAdapter() {
-			public boolean areOrdered(int i, int j) {
-				return numbers[i] <= numbers[j];
-			}
-
-			public void exchange(int i, int j) {
-				int tmp = numbers[i];
-				numbers[i] = numbers[j];
-				numbers[j] = tmp;
-			}
-		});
+		CombSorter11.sort(numbers.length, comparator, exchanger);
 		
 		checkAllPresentNoDuplicates();
 		checkOrder();
@@ -82,8 +86,7 @@ public class TestCombSorter11 {
 		for (int i = 0; i < numbers.length; i++)
 			numbers[i] = numbers.length - 1 - i;
 			
-		SA sa = new SA(numbers);
-		CombSorter11.sort(numbers.length, sa);
+		CombSorter11.sort(numbers.length, comparator, exchanger);
 		
 		checkAllPresentNoDuplicates();
 		checkOrder();
@@ -97,8 +100,7 @@ public class TestCombSorter11 {
 			numbers[j] = index++;
 		}
 			
-		SA sa = new SA(numbers);
-		CombSorter11.sort(numbers.length, sa);
+		CombSorter11.sort(numbers.length, comparator, exchanger);
 		
 		checkAllPresentNoDuplicates();
 		checkOrder();
@@ -118,23 +120,5 @@ public class TestCombSorter11 {
 	private void checkOrder() {
 		for (int i = 0; i < numbers.length - 1; i++)
 			Assert.assertTrue(numbers[i] <=  numbers[i + 1]);
-	}
-
-	private class SA implements IndexedCollectionSortAPI {
-		private int[] numbers;
-		
-		public SA(int[] numbers) {
-			this.numbers = numbers;
-		}
-		
-		public boolean areOrdered(int i, int j) {
-			return numbers[i] <= numbers[j];
-		}
-
-		public void exchange(int i, int j) {
-			int tmp = numbers[i];
-			numbers[i] = numbers[j];
-			numbers[j] = tmp;
-		}
 	}
 }
