@@ -172,20 +172,6 @@ public class ColorRGBAF {
 	}
 
 	/**
-	 * Perform the gamma correction on the color.
-	 * @param gamma the value to use for gamma
-	 */
-	public void gammaCorrect(double gamma) {
-        if (gamma == 1) return;
-
-        double invGamma = 1 / gamma;
-
-        r = (float)Math.pow(r, invGamma);
-        g = (float)Math.pow(g, invGamma);
-        b = (float)Math.pow(b, invGamma);
-    }
-	
-	/**
 	 * Return an AWT Color instance representing the color.
 	 */
 	public Color toAWTColor() {
@@ -213,7 +199,7 @@ public class ColorRGBAF {
 	}
 	
 	/**
-	 * Linearily interpolate a color, component-wise.
+	 * Linearly interpolate a color, component-wise.
 	 * @param left the color when the x value is 0
 	 * @param x the fraction
 	 * @param right the color when the x value is 1
