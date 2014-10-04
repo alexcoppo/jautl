@@ -29,13 +29,12 @@ package net.sf.jautl.graphics.colormaps;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import net.sf.jautl.graphics.colormaps.ggr.ColorMapSegmentsGGR;
 import net.sf.jautl.graphics.colormaps.greys.GreyContinuos;
 import net.sf.jautl.graphics.colormaps.greys.GreyContinuosTagged;
 import net.sf.jautl.graphics.colormaps.greys.GreySteps;
 import net.sf.jautl.graphics.colormaps.greys.GreyStepsTagged;
-import net.sf.jautl.graphics.colormaps.terrain.DEMPoster;
-import net.sf.jautl.graphics.colormaps.terrain.DEMPrint;
-import net.sf.jautl.graphics.colormaps.terrain.DEMScreen;
+import net.sf.jautl.graphics.colormaps.jcm.ColorMapSegmentsJCM;
 import net.sf.jautl.graphics.colormaps.terrain.Landserf;
 import net.sf.jautl.graphics.colormaps.terrain.MOLA;
 import net.sf.jautl.graphics.colormaps.terrain.MicroDEM;
@@ -54,18 +53,22 @@ public class ColorMapsDB {
 		lutsDB.put("Grey Steps 16", new GreySteps(2.2, 16));
 		lutsDB.put("Grey Steps Tagged 16", new GreyStepsTagged(2.2, 16));
 
-		lutsDB.put("DEM Poster", new DEMPoster(2.2));
-		lutsDB.put("DEM Print", new DEMPrint(2.2));
-		lutsDB.put("DEM Screen", new DEMScreen(2.2));
+		lutsDB.put("DEM Poster", new ColorMapSegmentsGGR(1, "colormaps/terrain/DEM_poster.ggr"));
+		lutsDB.put("DEM Print",  new ColorMapSegmentsGGR(1, "colormaps/terrain/DEM_print.ggr"));
+		lutsDB.put("DEM Screen", new ColorMapSegmentsGGR(1, "colormaps/terrain/DEM_screen.ggr"));
+		lutsDB.put("Elevation",  new ColorMapSegmentsGGR(1, "colormaps/terrain/elevation.ggr"));
 		lutsDB.put("Landserf", new Landserf(2.2));
 		lutsDB.put("MicroDEM", new MicroDEM(2.2));
 		lutsDB.put("MOLA", new MOLA(2.2));
 		lutsDB.put("3DEM", new ThreeDEM(2.2));
-		lutsDB.put("Wikpedia 1", new Wikipedia1(2.2));
-		lutsDB.put("Wikpedia 2", new Wikipedia2(2.2));
-		lutsDB.put("Wikpedia 3", new Wikipedia3(2.2));
+		lutsDB.put("Wikipedia 1", new Wikipedia1(2.2));
+		lutsDB.put("Wikipedia 2", new Wikipedia2(2.2));
+		lutsDB.put("Wikipedia 3", new Wikipedia3(2.2));
+		lutsDB.put("Wikipedia Schwartzwald", new ColorMapSegmentsGGR(1, "colormaps/terrain/wiki-schwarzwald-cont.ggr"));
 		
 		lutsDB.put("WarmBodyEx", new WarmBodyEx(2.2));
+		
+		lutsDB.put("QQQ", new ColorMapSegmentsJCM(1, "colormaps/test/qqq.json"));
 	}
 
 	public Object[] getNames() {

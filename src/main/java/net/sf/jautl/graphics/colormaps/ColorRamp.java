@@ -27,6 +27,7 @@
 package net.sf.jautl.graphics.colormaps;
 
 import net.sf.jautl.graphics.colors.ColorRGBAF;
+import net.sf.jautl.graphics.colors.GammaCorrection;
 import net.sf.jautl.numeric.easefunctions.EaseFunction;
 
 /**
@@ -55,7 +56,7 @@ public abstract class ColorRamp extends ColorMapRGBAF {
         else
         	lookupImplAux(x, color);
 
-        color.gammaCorrect(gamma);
+        GammaCorrection.linearToScreen(color, gamma);
 	}
 
 	/**
