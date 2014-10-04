@@ -28,6 +28,7 @@ package net.sf.jautl.graphics.colormaps.greys;
 
 import net.sf.jautl.graphics.colormaps.ColorMapRGBAF;
 import net.sf.jautl.graphics.colors.ColorRGBAF;
+import net.sf.jautl.graphics.colors.GammaCorrection;
 
 /**
  * This class implements a step-wise black to white colormap with two color
@@ -78,7 +79,7 @@ public class GreyStepsTagged extends ColorMapRGBAF {
 	        color.setB((float)x);
 	        color.setA(1);
 	        
-	        color.gammaCorrect(gamma);
+	        GammaCorrection.linearToScreen(color, gamma);
     	}
 	}
 }
