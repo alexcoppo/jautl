@@ -34,9 +34,9 @@ package net.sf.jautl.collections.arrays;
 public interface IndexedCollectionItemKeyComparator<K> {
 	/**
 	 * Perform the comparison.
-	 * @param index the index of the element
 	 * @param key the key to compare to
+	 * @param index the index of the element
 	 * @param result the result of the comparison
 	 */
-	public void compare(int index, K key, ComparisonResult result);
+	public void compare(K key, int index, ComparisonResult result);
 }
