@@ -44,10 +44,10 @@ public class BinarySearcher {
 		
 		ComparisonResult cr = new ComparisonResult();
 		
-		comparator.compare(lo, key, cr);
+		comparator.compare(key, lo, cr);
 		if (cr.isEqual())
 			return lo;
-		comparator.compare(hi, key, cr);
+		comparator.compare(key, lo, cr);
 		if (cr.isEqual())
 			return hi;
 
@@ -55,14 +55,14 @@ public class BinarySearcher {
 		
 		while (lo <= hi) {
 			mid = (lo +  hi) / 2;
-			comparator.compare(mid, key, cr);
+			comparator.compare(key, mid, cr);
 			
-			if (cr.isEqual())
-				return mid;
 			if (cr.isLessThen())
-				lo = mid + 1;
-			else
 				hi = mid - 1;
+			else if (cr.isEqual())
+				return mid;
+			else
+				lo = mid + 1;
 		}
 
 		return -mid;
