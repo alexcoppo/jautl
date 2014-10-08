@@ -36,6 +36,10 @@ import java.util.Comparator;
  * This class implements a filesystem recursive scanner. 
  */
 public class FileSystemScanner {
+    private FileSystemScannerEventSink snk;
+    private FilenameFilter fileFilter;
+    private FilenameFilter dirFilter;
+
     /**
      * The status of the processing.
      */
@@ -200,8 +204,4 @@ public class FileSystemScanner {
             }
         });
     }
-
-    private FileSystemScannerEventSink snk;
-    private FilenameFilter fileFilter;
-    private FilenameFilter dirFilter;
 }
