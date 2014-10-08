@@ -42,7 +42,6 @@ import net.sf.jautl.graphics.colormaps.terrain.ThreeDEM;
 import net.sf.jautl.graphics.colormaps.terrain.Wikipedia1;
 import net.sf.jautl.graphics.colormaps.terrain.Wikipedia2;
 import net.sf.jautl.graphics.colormaps.terrain.Wikipedia3;
-import net.sf.jautl.graphics.colormaps.warmbody.WarmBodyEx;
 
 public class ColorMapsDB {
 	private Map<String, IColorMapRGBAF> lutsDB = new LinkedHashMap<String, IColorMapRGBAF>(16, .75f, false);
@@ -66,9 +65,7 @@ public class ColorMapsDB {
 		lutsDB.put("Wikipedia 3", new Wikipedia3(2.2));
 		lutsDB.put("Wikipedia Schwartzwald", new ColorMapSegmentsGGR(1, "colormaps/terrain/wiki-schwarzwald-cont.ggr"));
 		
-		lutsDB.put("WarmBodyEx", new WarmBodyEx(2.2));
-		
-		lutsDB.put("QQQ", new ColorMapSegmentsJCM(1, "colormaps/test/qqq.json"));
+		lutsDB.put("Warmbody", new ColorMapSegmentsJCM(2.2, "colormaps/warmbody/warmbody.json"));
 	}
 
 	public Object[] getNames() {
