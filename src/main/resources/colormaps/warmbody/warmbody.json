@@ -1,0 +1,26 @@
+{
+	"version": 1,
+	"title" : "Warmbody",
+	"segments": [
+		{
+			"lo-pos": 0,
+			"hi-pos": .25,
+			"lo-color": { "model": "rgb", "values": [ 0, 0, 0 ] },
+			"hi-color": { "model": "rgb", "values": [ 1, 0, 0 ] },
+			"ramp-color-mode": "rgb",
+			"ramp-type": "linear"
+		},
+		{
+			"hi-pos": .75,
+			"hi-color": { "model": "rgb", "values": [ 1, 1, 0 ] },
+			"ramp-color-mode": "rgb",
+			"ramp-type": "linear"
+		},
+		{
+			"hi-pos": 1,
+			"hi-color": { "model": "rgb", "values": [ 1, 1, 1 ] },
+			"ramp-color-mode": "rgb",
+			"ramp-type": "linear"
+		}
+	]
+}

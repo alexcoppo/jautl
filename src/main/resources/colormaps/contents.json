@@ -1,0 +1,13 @@
+{
+	"version" : 1,
+	"colormaps" : [
+		{ "name" : "terrain/DEM_poster.ggr" },
+		{ "name" : "terrain/DEM_print.ggr" },
+		{ "name" : "terrain/DEM_screen.ggr" },
+		{ "name" : "terrain/elevation.ggr" },
+		{ "name" : "terrain/elevation.ggr" },
+		{ "name" : "terrain/wiki-schwarzwald-cont.ggr" },
+
+		{ "name" : "warmbody/warmbody.json" },
+	]
+}
