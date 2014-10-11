@@ -33,6 +33,9 @@ package net.sf.jautl.md;
 
 import net.sf.jautl.utility.BitRotations;
 
+/**
+ * This class implements the SipHash message digest algorithm.
+ */
 public class SipHash extends DigestEngine {
 	private int blockRounds;
 	private int finalRounds;
