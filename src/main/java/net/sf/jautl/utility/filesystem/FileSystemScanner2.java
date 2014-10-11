@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 
+/**
+ * Improved version of FileSystemScanner. 
+ */
 public class FileSystemScanner2 {
     private FileSystemScannerListener listener;
     private FilenameFilter fileFilter;
