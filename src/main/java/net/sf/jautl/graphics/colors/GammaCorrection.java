@@ -1,5 +1,8 @@
 package net.sf.jautl.graphics.colors;
 
+/**
+ * This class contains methods to perform gamma correction. 
+ */
 public class GammaCorrection {
 	public static double linearToScreen(double value, double gamma) {
         return Math.pow(value, 1 / gamma);
