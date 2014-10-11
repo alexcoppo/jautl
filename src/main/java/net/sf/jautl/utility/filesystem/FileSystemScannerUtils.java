@@ -6,7 +6,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Utility methods for filesystem scanning. 
+ */
 public class FileSystemScannerUtils {
+	/**
+	 * 
+	 * @param root
+	 * @param fileFilter
+	 * @return
+	 */
     public static ArrayList<File> enumFiles(File root, FilenameFilter fileFilter) {
         File[] files = (fileFilter != null) ? root.listFiles(fileFilter) : root.listFiles();
         	
@@ -23,6 +32,12 @@ public class FileSystemScannerUtils {
         return result;
     }
 
+    /**
+     * 
+     * @param root
+     * @param dirFilter
+     * @return
+     */
     public static ArrayList<File> enumDirectories(File root, FilenameFilter dirFilter) {
         File[] files = (dirFilter != null) ? root.listFiles(dirFilter) : root.listFiles();
 

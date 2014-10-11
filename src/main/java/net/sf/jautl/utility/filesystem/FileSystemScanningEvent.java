@@ -2,6 +2,10 @@ package net.sf.jautl.utility.filesystem;
 
 import java.io.File;
 
+/**
+ * This class describes the informations of the specific filesytem scanning
+ * event.
+ */
 public class FileSystemScanningEvent {	
 	private FileSystemScanningEventEnum event;
 	private File currentFile;
