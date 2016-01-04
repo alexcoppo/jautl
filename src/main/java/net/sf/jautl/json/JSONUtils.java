@@ -59,7 +59,6 @@ public class JSONUtils {
 	public static boolean isJSONArray(JSONArray array, int index) {
 		return isClass(array, index, JSONArray.class);
 	}
-
 	
 	public static boolean isClass(JSONObject obj, String name, Class<?> clazz) {
 		if (!existsAttribute(obj, name))
@@ -72,6 +71,12 @@ public class JSONUtils {
 		}
 	}
 	
+	/**
+	 * Checks whether an entry in a JSON array is of a specific class.
+	 * @param array the array containing the entry
+	 * @param index the index of the entry
+	 * @param clazz the class to check
+	 */
 	public static boolean isClass(JSONArray array, int index, Class<?> clazz) {
 		try {
 			return array.get(index).getClass().equals(clazz);
@@ -86,7 +91,6 @@ public class JSONUtils {
 	 * @param obj the object to access
 	 * @param name the name of the attribute
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static boolean getBoolean(JSONObject obj, String name, boolean defValue) {
 		if (!existsAttribute(obj, name))
@@ -105,7 +109,6 @@ public class JSONUtils {
 	 * @param array the array to access
 	 * @param index the index of the element
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static boolean getBoolean(JSONArray array, int index, boolean defValue) {
 		try {
@@ -122,7 +125,6 @@ public class JSONUtils {
 	 * @param obj the object to access
 	 * @param name the name of the attribute
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static String getString(JSONObject obj, String name, String defValue) {
 		if (!existsAttribute(obj, name))
@@ -141,7 +143,6 @@ public class JSONUtils {
 	 * @param array the array to access
 	 * @param index the index of the element
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static String getString(JSONArray array, int index, String defValue) {
 		try {
@@ -158,7 +159,6 @@ public class JSONUtils {
 	 * @param obj the object to access
 	 * @param name the name of the attribute
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static int getInteger(JSONObject obj, String name, int defValue) {
 		if (!existsAttribute(obj, name))
@@ -177,7 +177,6 @@ public class JSONUtils {
 	 * @param array the array to access
 	 * @param index the index of the element
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static int getInteger(JSONArray array, int index, int defValue) {
 		try {
@@ -249,7 +248,6 @@ public class JSONUtils {
 	 * @param array the array to access
 	 * @param index the index of the element
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static float getFloat(JSONArray array, int index, float defValue) {
 		try {
@@ -266,7 +264,6 @@ public class JSONUtils {
 	 * @param obj the object to access
 	 * @param name the name of the attribute
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static double getDouble(JSONObject obj, String name, double defValue) {
 		if (!existsAttribute(obj, name))
@@ -285,7 +282,6 @@ public class JSONUtils {
 	 * @param array the array to access
 	 * @param index the index of the element
 	 * @param defValue the default value
-	 * @return
 	 */
 	public static double getDouble(JSONArray array, int index, double defValue) {
 		try {
@@ -302,7 +298,6 @@ public class JSONUtils {
 	 * @param obj the object to access
 	 * @param name the name of the attribute
 	 * @param defValue the default value
-	 * @return
 	 */
     public static JSONObject getObject(JSONObject obj, String name, JSONObject defValue) {
 		if (!existsAttribute(obj, name))
@@ -322,7 +317,6 @@ public class JSONUtils {
 	 * @param obj the object to access
 	 * @param name the name of the attribute
 	 * @param defValue the default value
-	 * @return
 	 */
     public static JSONArray getArray(JSONObject obj, String name, JSONArray defValue) {
 		try {
@@ -338,7 +332,6 @@ public class JSONUtils {
 	 * @param array the array to access
 	 * @param index the index of the element
 	 * @param defValue the default value
-     * @return
      */
     public static JSONObject getObject(JSONArray arr, int index, JSONObject defValue) {
 		try {
